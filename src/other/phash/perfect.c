@@ -138,12 +138,12 @@ hashform *form;
   case INT_HT:
     if (key1->hash_k == key2->hash_k)
     {
-      fprintf(stderr, "perfect.c: Duplicate keys!  %"PRIx32".8\n", key1->hash_k);
+      fprintf(stderr, "perfect.c: Duplicate keys!  %.8"PRIx32"\n", key1->hash_k);
       exit(SUCCESS);
     }
     break;
   case AB_HT:
-    fprintf(stderr, "perfect.c: Duplicate keys!  %"PRIx32".8 %"PRIx32".8\n",
+    fprintf(stderr, "perfect.c: Duplicate keys!  %.8"PRIx32" %.8"PRIx32"\n",
 	    key1->a_k, key1->b_k);
     exit(SUCCESS);
     break;

@@ -158,7 +158,7 @@ hashform *form;                                           /* user directives */
     {
       fprintf(f, "ub4 scramble[] = {\n");
       for (i=0; i<=UB1MAXVAL; i+=4)
-        fprintf(f, "0x%"PRIx32".8, 0x%"PRIx32".8, 0x%"PRIx32".8, 0x%"PRIx32".8,\n",
+        fprintf(f, "0x%.8"PRIx32", 0x%.8"PRIx32", 0x%.8"PRIx32", 0x%.8"PRIx32",\n",
                 scramble[i+0], scramble[i+1], scramble[i+2], scramble[i+3]);
     }
     else
@@ -166,7 +166,7 @@ hashform *form;                                           /* user directives */
       fprintf(f, "ub2 scramble[] = {\n");
       for (i=0; i<=UB1MAXVAL; i+=8)
         fprintf(f, 
-"0x%"PRIx32".4, 0x%"PRIx32".4, 0x%"PRIx32".4, 0x%"PRIx32".4, 0x%"PRIx32".4, 0x%"PRIx32".4, 0x%"PRIx32".4, 0x%"PRIx32".4,\n",
+"0x%.4"PRIx32", 0x%.4"PRIx32", 0x%.4"PRIx32", 0x%.4"PRIx32", 0x%.4"PRIx32", 0x%.4"PRIx32", 0x%.4"PRIx32", 0x%.4"PRIx32",\n",
                 scramble[i+0], scramble[i+1], scramble[i+2], scramble[i+3],
                 scramble[i+4], scramble[i+5], scramble[i+6], scramble[i+7]);
     }
