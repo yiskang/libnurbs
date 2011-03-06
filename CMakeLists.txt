@@ -3,11 +3,18 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 PROJECT(LIBNURBS)
 SET(LIBNURBS_VERSION 0.001)
 
+SET(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/CMake")
+
 OPTION(BUILD_LIBNURBS_DOXYGEN "Create doxygen documentation for developers" OFF)
 
 #OPTION(BUILD_LIBNURBS_GOOGLEMOCK_TESTS "Build tests based on Google Mock Framework" OFF)
 
+OPTION(ENABLE_COMPILER_WARNINGS "Use extra compiler warning flags" ON)
+OPTION(ENABLE_STRICT_COMPILE "Treat compiler warnings as errors" OFF)
+
 find_package(ZLIB)
+
+include(CompilerFlags)
 
 ADD_SUBDIRECTORY(src)
 ADD_SUBDIRECTORY(doc)
