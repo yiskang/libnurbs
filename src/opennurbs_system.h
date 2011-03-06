@@ -292,7 +292,7 @@
 #define NULL 0
 #endif
 
-#if !defined(_WCHAR_T_DEFINED)
+#if !defined(ON_COMPILER_MSC) && !defined(ON_COMPILER_GNU) && !defined(ON_COMPILER_SUN)
 // If you are using VC7/.NET and are having trouble linking 
 // to functions that have whcar_t types in arguments, then
 // read the documentation about the wchar_t type and

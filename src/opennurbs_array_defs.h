@@ -1671,7 +1671,6 @@ void ON_ClassArray<T>::SetCapacity( int capacity )
 /////////////////////////////////////////////////////////////////////////////////////
 
 template< class T>
-static
 int ON_CompareIncreasing( const T* a, const T* b)
 {
 	if( *a < *b ) 
@@ -1682,7 +1681,6 @@ int ON_CompareIncreasing( const T* a, const T* b)
 }
 
 template< class T>
-static
 int ON_CompareDecreasing( const T* a, const T* b)
 {
 	if( *b < *a ) 
