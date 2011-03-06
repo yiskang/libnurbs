@@ -1078,7 +1078,7 @@ ON_BOOL32 ON_ArcCurve::GetNormalizedArcLengthPoints(
         const ON_Interval* sub_domain
         ) const
 {
-  if ( count > 0 || s != NULL && t != NULL )
+  if ( count > 0 || ( s != NULL && t != NULL ) )
   {
     if ( !sub_domain )
       sub_domain = &m_t;

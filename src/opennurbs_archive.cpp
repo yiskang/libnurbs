@@ -947,8 +947,8 @@ ON_BinaryArchive::ReadStringSize( // Read size of NULL terminated string
       if ( 0 != curchunk && 0 == (TCODE_SHORT & curchunk->m_typecode) )
       {
         if (    curchunk->m_big_value < 0 
-             || curchunk->m_big_value >= 0x0FFFFFFF // 268 million chars oughta be plenty
-             && ui32 > ((ON__UINT32)curchunk->m_big_value) 
+             || ( curchunk->m_big_value >= 0x0FFFFFFF // 268 million chars oughta be plenty
+             && ui32 > ((ON__UINT32)curchunk->m_big_value) )
            )
         {
           ON_ERROR("ON_BinaryArchive::ReadStringSize() length exceeds current chunk size");
@@ -5291,7 +5291,7 @@ bool ON_BinaryArchive::Read3dmStartSection( int* version, ON_String& s )
             s.SetLength( slen );
             s[slen] = 0;
             ReadByte( slen, s.Array() );
-            while ( slen > 0 && s[slen-1] == 0 || s[slen-1] == 26 ) {
+            while ( ( slen > 0 && s[slen-1] == 0 ) || s[slen-1] == 26 ) {
               s[slen-1] = 0;
               slen--;
             }
@@ -6359,7 +6359,7 @@ bool ON_BinaryArchive::FindMisplacedTable(
   bool rc = false;
   unsigned char buffer2048[2048];
   const ON__UINT64 pos0 = CurrentPosition();
-  if ( pos0 < 0 || (filelength > 0 && pos0 >= filelength) )
+  if ( filelength > 0 && pos0 >= filelength )
     return false;
 
   ON__UINT32 tcode;
@@ -9616,9 +9616,9 @@ bool ON_BinaryArchive::ReadV1_TCODE_ANNOTATION(
     {
       // read the version id
       rc = ReadInt( &version);
-      if( rc &&
-          version == RHINO_TEXT_BLOCK_VERSION_1 ||
-          version == RHINO_TEXT_BLOCK_VERSION_2 )
+      if( rc && 
+          ( version == RHINO_TEXT_BLOCK_VERSION_1 ||
+          version == RHINO_TEXT_BLOCK_VERSION_2 ) )
       {
         //this is a version we can read....
         // this is a type flag that we throw away
@@ -12279,7 +12279,7 @@ bool ON_BinaryArchive::MaskReadError( ON__UINT64 sizeof_request, ON__UINT64 size
     return true; // no error
   if ( sizeof_request > sizeof_read )
     return false; // something is seriously wrong
-  if ( 0 != (0x04 & m_error_message_mask) && 0 <= sizeof_request )
+  if ( 0 != (0x04 & m_error_message_mask) )
     return true;
   if ( 0 != (0x01 & m_error_message_mask) && 4 == sizeof_request && 0 == sizeof_read )
     return true;
@@ -12620,7 +12620,6 @@ bool ON_BinaryFile::SeekFromCurrentPosition( int offset )
   if ( m_fp ) 
   {
     if ( m_memory_buffer && 
-         m_memory_buffer_ptr+offset >= 0 &&
          m_memory_buffer_ptr+offset <= m_memory_buffer_size ) {
       m_memory_buffer_ptr += offset;
       rc = true;
@@ -14037,7 +14036,7 @@ bool ON_Read3dmBufferArchive::SeekFromCurrentPosition( int offset )
 bool ON_Read3dmBufferArchive::SeekFromStart( size_t offset )
 {
   bool rc = false;
-  if ( m_buffer && offset >= 0 ) 
+  if ( m_buffer ) 
   {
     m_buffer_position = offset;
     rc = true;
@@ -14184,7 +14183,7 @@ bool ON_Write3dmBufferArchive::SeekFromCurrentPosition( int offset )
 bool ON_Write3dmBufferArchive::SeekFromStart( size_t offset )
 {
   bool rc = false;
-  if ( m_buffer && offset >= 0 ) 
+  if ( m_buffer ) 
   {
     m_buffer_position = offset;
     rc = true;
