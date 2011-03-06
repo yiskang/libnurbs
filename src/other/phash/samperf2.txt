@@ -1,0 +1,6 @@
+Read in 58 keys
+found distinct (A,B) on attempt 1
+built perfect hash table of size 64
+Wrote phash.h
+Wrote phash.c
+Cleaned up
