@@ -118,8 +118,8 @@ ub4  salt;
           nkeys);
   fprintf(f, "#define PHASHRANGE %"PRIu32"  /* Range any input might map to */\n",
           smax);
-  fprintf(f, "#define PHASHSALT 0x%.8lx /* internal, initialize normal hash */\n",
-          (unsigned long)salt*0x9e3779b9);
+  fprintf(f, "#define PHASHSALT 0x%.8"PRIx32" /* internal, initialize normal hash */\n",
+          salt*0x9e3779b9);
   fprintf(f, "\n");
   fprintf(f, "ub4 phash();\n");
   fprintf(f, "\n");
