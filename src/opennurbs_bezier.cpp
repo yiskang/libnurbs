@@ -1603,7 +1603,7 @@ bool ON_BezierCurve::Split(
       {
         left_bez.Create( m_dim, m_is_rat, m_order );
       }
-      else if ( left_bez.m_dim != m_dim && left_bez.m_is_rat != m_is_rat && left_bez.m_order != m_order || left_bez.m_cv_stride < cvdim )
+      else if ( ( left_bez.m_dim != m_dim && left_bez.m_is_rat != m_is_rat && left_bez.m_order != m_order ) || left_bez.m_cv_stride < cvdim )
       {
         left_bez.m_dim       = m_dim;
         left_bez.m_is_rat    = m_is_rat?1:0;
@@ -1618,7 +1618,7 @@ bool ON_BezierCurve::Split(
       {
         right_bez.Create( m_dim, m_is_rat, m_order );
       }
-      else if ( right_bez.m_dim != m_dim && right_bez.m_is_rat != m_is_rat && right_bez.m_order != m_order || right_bez.m_cv_stride < cvdim )
+      else if ( ( right_bez.m_dim != m_dim && right_bez.m_is_rat != m_is_rat && right_bez.m_order != m_order ) || right_bez.m_cv_stride < cvdim )
       {
         right_bez.m_dim       = m_dim;
         right_bez.m_is_rat    = m_is_rat?1:0;

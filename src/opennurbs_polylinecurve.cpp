@@ -1097,7 +1097,7 @@ ON_BOOL32 ON_PolylineCurve::GetNormalizedArcLengthPoints(
   // TODO: move actual calculations into this function and 
   // have GetNormalizedArcLengthPoint() call here.
   ON_BOOL32 rc = true;
-  if ( count > 0 || s != NULL && t != NULL )
+  if ( count > 0 || ( s != NULL && t != NULL ) )
   {
     int i;
     for ( i = 0; i < count && rc ; i++ )
@@ -1381,7 +1381,7 @@ ON_BOOL32 ON_PolylineCurve::Split(
     //   when (t=m_t[0]+epsilon and epsilon is small enough
     //   that parameter search considers t to be nearly equal
     //   to m_t[0].
-    if (    (segment_index >= 1 || false==split_at_break && 0 == segment_index)
+    if ( (segment_index >= 1 || ( false==split_at_break && 0 == segment_index ))
          && segment_index < count 
          && m_t[0] < t && t < m_t[count] 
        )

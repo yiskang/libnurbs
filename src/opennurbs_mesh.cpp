@@ -9475,7 +9475,7 @@ ON_MeshDoubleVertices* ON_MeshDoubleVertices::Attach(const ON_Mesh* mesh)
 {
   ON_MeshDoubleVertices* dv = ON_MeshDoubleVertices::Get(mesh);
   if ( 0 != dv )
-    return false;
+    return (ON_MeshDoubleVertices *)NULL;
   dv = new ON_MeshDoubleVertices();
   const_cast<ON_Mesh*>(mesh)->AttachUserData(dv);
   return dv;

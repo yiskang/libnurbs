@@ -292,7 +292,7 @@ bool ON_SerialNumberMap::SN_BLOCK::IsValidBlock(ON_TextLog* textlog,
   unsigned int sn0, sn;
   size_t i, pc, aidcnt;
 
-  if ( m_count < 0 || m_count > SN_BLOCK_CAPACITY )
+  if ( m_count > SN_BLOCK_CAPACITY )
   {
     if (textlog)
       textlog->Print("SN_BLOCK m_count = %u (should be >=0 and <%u).\n",
@@ -300,7 +300,7 @@ bool ON_SerialNumberMap::SN_BLOCK::IsValidBlock(ON_TextLog* textlog,
     return false;
   }
 
-  if ( m_purged < 0 || m_purged > m_count )
+  if ( m_purged > m_count )
   {
     if (textlog)
       textlog->Print("SN_BLOCK m_purged = %u (should be >0 and <=%u).\n",

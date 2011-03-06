@@ -414,7 +414,7 @@ bool ON_UnknownUserDataArchive::SeekFromCurrentPosition( int offset )
 {
   bool rc = false;
   size_t newpos = m_buffer_position + offset;
-  if ( newpos >= 0 && newpos < m_sizeof_buffer ) 
+  if ( newpos < m_sizeof_buffer ) 
   {
     m_buffer_position = newpos;
     rc = true;
@@ -425,7 +425,7 @@ bool ON_UnknownUserDataArchive::SeekFromCurrentPosition( int offset )
 bool ON_UnknownUserDataArchive::SeekFromStart( size_t offset )
 {
   bool rc = false;
-  if ( offset >= 0 && offset < m_sizeof_buffer ) 
+  if ( offset < m_sizeof_buffer ) 
   {
     m_buffer_position = offset;
     rc = true;

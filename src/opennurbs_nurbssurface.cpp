@@ -893,7 +893,7 @@ ON_Curve* ON_NurbsSurface::IsoCurve(
   int i,j,k,Scvsize,span_index;
   double* Ncv;
   const double* Scv;
-  if ( dir == 0 || dir == 1 && IsValid() ) {
+  if ( dir == 0 || ( dir == 1 && IsValid() ) ) {
     Scvsize = CVSize();
     ON_NurbsCurve* nurbscrv = new ON_NurbsCurve( m_dim, m_is_rat, m_order[dir], m_cv_count[dir] );
     memcpy( nurbscrv->m_knot, m_knot[dir], nurbscrv->KnotCount()*sizeof(*nurbscrv->m_knot) );

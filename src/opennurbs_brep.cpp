@@ -588,7 +588,7 @@ ON_BOOL32 ON_BrepTrim::IsValid( ON_TextLog* text_log ) const
   }
 
   unsigned int i = m_type;
-  if ( i < 0 || i >= trim_type_count )
+  if ( i >= trim_type_count )
   {
     if ( text_log )
     {
@@ -606,7 +606,7 @@ ON_BOOL32 ON_BrepTrim::IsValid( ON_TextLog* text_log ) const
   }
 
   i = m_iso;
-  if ( i < 0 || i >= ON_Surface::iso_count )
+  if ( i >= ON_Surface::iso_count )
   {
     if ( text_log )
     {

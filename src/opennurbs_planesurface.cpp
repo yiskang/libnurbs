@@ -384,7 +384,7 @@ ON_PlaneSurface::Evaluate( // returns false if unable to evaluate
 ON_Curve* ON_PlaneSurface::IsoCurve( int dir, double c ) const
 {
   ON_LineCurve* line_curve = 0;
-  if ( dir == 0 || dir == 1 && IsValid() ) 
+  if ( dir == 0 || ( dir == 1 && IsValid() ) )
   {
     ON_Line line;
     ON_Interval domain = Domain(dir);

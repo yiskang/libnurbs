@@ -1215,7 +1215,7 @@ int ON_BoundingBox::GetClosestPoint(
 	for(i=0; i<2; i++){
 		closest = ClosestPoint(line[i]);
 		double dot = (closest - line[i]) * line.Direction();
-		if( i==0 && dot<= 0 || i==1 && dot>=0 ){
+		if( ( i==0 && dot<= 0 ) || ( i==1 && dot>=0 ) ){
 			if(t0) *t0 = i;
 			if(t1) *t1 = i;
 			box_point = closest;

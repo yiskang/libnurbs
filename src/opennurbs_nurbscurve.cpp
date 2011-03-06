@@ -2957,7 +2957,7 @@ bool ON_NurbsCurve::Append( const ON_NurbsCurve& c )
       return false;
   }
 
-  if (    IsRational() && !c.IsRational() 
+  if (   ( IsRational() && !c.IsRational() )
        || c.Degree() < Degree() 
        || !c.IsClamped(0) 
        || c.Dimension() < Dimension() ) 
@@ -3452,9 +3452,9 @@ static bool ON_IsDuplicatePointList( int dim, int is_rat,
                                      double tolerance
                                      )
 {
-  bool rc = (dim > 0 || is_rat >= 0 && is_rat <= 1 && count > 0
+  bool rc = (dim > 0 || ( is_rat >= 0 && is_rat <= 1 && count > 0
              && abs(stride) >= dim+is_rat && abs(other_stride) >= (dim+is_rat)
-             && 0 != cv && 0 != other_cv);
+             && 0 != cv && 0 != other_cv) );
   if (rc)
   {
     if ( tolerance < 0.0 )
