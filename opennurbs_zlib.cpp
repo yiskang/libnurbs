@@ -27,12 +27,20 @@
 #if defined(NDEBUG)
 
 // release x64 libs
+#if defined(ON_PURIFY_BUILD)
+#pragma comment(lib, "./zlib/x64/ReleasePurify/zlibx64.lib")
+#else
 #pragma comment(lib, "./zlib/x64/Release/zlibx64.lib")
+#endif
 
 #else // _DEBUG
 
 // debug  x64 libs
+#if defined(ON_PURIFY_BUILD)
+#pragma comment(lib, "./zlib/x64/DebugPurify/zlibx64_d.lib")
+#else
 #pragma comment(lib, "./zlib/x64/Debug/zlibx64_d.lib")
+#endif
 
 #endif // if NDEBUG else _DEBUG
 
@@ -43,12 +51,20 @@
 #if defined(NDEBUG)
 
 // release 32 bit WIndows libs
+#if defined(ON_PURIFY_BUILD)
+#pragma comment(lib, "./zlib/ReleasePurify/zlib.lib")
+#else
 #pragma comment(lib, "./zlib/Release/zlib.lib")
+#endif
 
 #else // _DEBUG
 
 // debug 32 bit WIndows libs
+#if defined(ON_PURIFY_BUILD)
+#pragma comment(lib, "./zlib/DebugPurify/zlib_d.lib")
+#else
 #pragma comment(lib, "./zlib/Debug/zlib_d.lib")
+#endif
 
 #endif // if NDEBUG else _DEBUG
 
@@ -375,9 +391,9 @@ bool ON_BinaryArchive::ReadInflate(
   // read compressed buffer from 3dm archive
   bool bValidCompressedBuffer = false;
   {
-    unsigned int tcode = 0;
-    unsigned int value = 0; // value must be unsigned
-    rc = BeginRead3dmChunk(&tcode,(int*)(&value) );
+    ON__UINT32 tcode = 0;
+    ON__INT64  big_value = 0;
+    rc = BeginRead3dmBigChunk(&tcode,&big_value );
     if (!rc)
     {
       if ( 0 != out___buffer && sizeof___outbuffer > 0 )
@@ -385,12 +401,12 @@ bool ON_BinaryArchive::ReadInflate(
       return false;
     }
     if (   tcode == TCODE_ANONYMOUS_CHUNK 
-        && value > 4 
+        && big_value > 4 
         && sizeof___outbuffer > 0 
         && 0 != out___buffer )
     {
       // read compressed buffer from the archive
-      sizeof__inbuffer = value-4; // the last 4 bytes in this chunk are a 32 bit crc
+      sizeof__inbuffer = (size_t)(big_value-4); // the last 4 bytes in this chunk are a 32 bit crc
       in___buffer = onmalloc(sizeof__inbuffer);
       if ( !in___buffer )
       {
