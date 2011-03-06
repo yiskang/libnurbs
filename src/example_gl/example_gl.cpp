@@ -19,7 +19,7 @@
 
 #if defined(ON_COMPILER_MSC)
 
-if ( _MSC_VER != 1400 )
+#if ( _MSC_VER != 1400 )
 // Tested compilers:
 //   Microsoft Visual Studio 2005
 //   Support for other compilers is not available.
@@ -30,9 +30,9 @@ if ( _MSC_VER != 1400 )
 //   Open GL auxillary functions.
 #endif
 
-#include <GL/GLaux.h>   // Open GL auxillary functions
+//#include <GL/GLaux.h>   // Open GL auxillary functions
 
-#define ON_EXAMPLE_GL_USE_GLAUX
+//#define ON_EXAMPLE_GL_USE_GLAUX
 
 #elif defined(ON_COMPILER_XCODE)
 
@@ -46,7 +46,9 @@ if ( _MSC_VER != 1400 )
 
 // Unsupported compiler:
 //   Support for other compilers is not available
-#error Choose between OpenGL AUX or OpenGL GLUT.
+#include <GL/glut.h>   // Open GL auxillary functions
+#define ON_EXAMPLE_GL_USE_GLUT
+//#error Choose between OpenGL AUX or OpenGL GLUT.
 
 //#include <GLaux.h>   // Open GL auxillary functions
 //#define ON_EXAMPLE_GL_USE_GLAUX
@@ -210,7 +212,7 @@ void MY_GL_CALLBACK myGLAUX_MouseLeftEvent( AUX_EVENTREC* );   // for auxMouseFu
 void MY_GL_CALLBACK myGLAUX_MouseMiddleEvent( AUX_EVENTREC* ); // for auxMouseFunc();
 void MY_GL_CALLBACK myGLAUX_MouseRightEvent( AUX_EVENTREC* );  // for auxMouseFunc();
 
-typedef void (CALLBACK* RHINO_GL_NURBS_ERROR)();
+//typedef void (CALLBACK* RHINO_GL_NURBS_ERROR)();
 #endif
 
 #if defined(ON_EXAMPLE_GL_USE_GLUT)
@@ -223,10 +225,10 @@ void MY_GL_CALLBACK myGLUT_SpecialKeyEvent( int ch, int x, int y );    // for au
 // If you are using Apple's Xcode and you get a compile error
 // on the typedef below, then try using the commented out typedef.
 //
-// Apple's Xcode 2.4 likes this typedef witht the (...)
-typedef void (CALLBACK* RHINO_GL_NURBS_ERROR)(...);
+// Apple's Xcode 2.4 likes this typedef with the (...)
+//typedef void (CALLBACK* RHINO_GL_NURBS_ERROR)(...);
 //
-// Apple's Xcode 3.2 likes this typedef witht the (...)
+// Apple's Xcode 3.2 likes this typedef without the ()
 //typedef void (CALLBACK* RHINO_GL_NURBS_ERROR)();
 #endif
 
@@ -463,9 +465,9 @@ ON_BOOL32 myInitGL( const ON_Viewport& viewport, GLUnurbsObj*& nobj )
   // register GL NURBS error callback
   {
     // hack to get around C vs C++ type checking trauma
-    RHINO_GL_NURBS_ERROR fn;
-    fn = (RHINO_GL_NURBS_ERROR)myNurbsErrorCallback;
-    gluNurbsCallback( nobj, GLU_ERROR, fn );
+    //RHINO_GL_NURBS_ERROR fn;
+   // fn = (RHINO_GL_NURBS_ERROR)myNurbsErrorCallback;
+    gluNurbsCallback( nobj, GLU_ERROR, NULL);
   }
 
   return true;
