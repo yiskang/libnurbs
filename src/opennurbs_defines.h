@@ -258,6 +258,10 @@ ON_END_EXTERNC
 */
 #define ON_ZERO_TOLERANCE 1.0e-12
 
+/*
+// Define macro for "zero" floating point comparisons.
+*/
+#define ON_ZERO(_num) (((_num) > -ON_ZERO_TOLERANCE) && ((_num) < ON_ZERO_TOLERANCE))
 
 /*
 // The default test for deciding if a curvature value should be
