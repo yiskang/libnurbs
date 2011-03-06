@@ -582,6 +582,64 @@ int ON_SimpleArray<T>::BinarySearch( const T* key, int (*compar)(const T*,const 
 
 }
 
+/* These two header definitions are moved here from opennurbs_math.h (starting at line 1447)
+ * in order to make clang happy */
+
+/*
+Description:
+  heap sort analogue of qsort()
+Parameters
+  base - [in]
+    array of count elements
+  count - [in]
+    number of elements in the index[] and base[] arrays
+  sizeof_element - [in]
+    number of bytes between consecutive elements in the
+    base[] array.
+  compare - [in]
+    Comparison function a la qsort().  The context parameter
+    is pass as the third argument.
+  context - [in]
+    pointer passed as the third argument to compare().
+*/
+ON_DECL
+void ON_hsort( 
+        void* base,
+        size_t count,
+        size_t sizeof_element,
+        int (*compare)(const void*,const void*)
+        );
+
+/*
+Description:
+  heap sort analogue of qsort() with a compare function
+  that takes an additional pointer that can be used to
+  pass extra informtation.
+Parameters
+  base - [in]
+    array of count elements
+  count - [in]
+    number of elements in the index[] and base[] arrays
+  sizeof_element - [in]
+    number of bytes between consecutive elements in the
+    base[] array.
+  compare - [in]
+    Comparison function a la qsort().  The context parameter
+    is passed as the first argument.
+  context - [in]
+    pointer passed as the first argument to compare().
+*/
+ON_DECL
+void ON_hsort( 
+        void* base,
+        size_t count,
+        size_t sizeof_element,
+        int (*compare)(void*,const void*,const void*),
+        void* context
+        );
+
+
+
 template <class T>
 bool ON_SimpleArray<T>::HeapSort( int (*compar)(const T*,const T*) )
 {
