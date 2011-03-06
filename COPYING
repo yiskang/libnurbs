@@ -1,0 +1,18 @@
+libnurbs is built upon a number of other open source libraries.
+The original copyright information and license statements of each are
+preserved below.
+
+For the moment, because libnurbs is not using any code except that of
+openNURBS, libnurbs in aggregate can be regarded as being licensed under 
+the Modified BSD license - see doc/licenses/LIBNURBS-COPYING  
+
+A final decision has not yet been made as to whether to utilize LGPL code
+in implementing new functionality for openNURBS - until the benefits to
+doing so are clear and compelling, Modified BSD will be preferred.
+
+Below is a quick summary of the licenses of the various libraries that have been
+utilized - for full text, see the doc/licenses directory. 
+
+Name		License
+-----------------------------------------------------------------------------
+OpenNURBS 	unrestricted (see opennurbs.txt)

@@ -1,0 +1,13 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+
+PROJECT(LIBNURBS)
+SET(LIBNURBS_VERSION 0.001)
+
+OPTION(BUILD_LIBNURBS_DOXYGEN "Create doxygen documentation for developers" OFF)
+
+#OPTION(BUILD_LIBNURBS_GOOGLEMOCK_TESTS "Build tests based on Google Mock Framework" OFF)
+
+find_package(ZLIB)
+
+#ADD_SUBDIRECTORY(src)
+ADD_SUBDIRECTORY(doc)
