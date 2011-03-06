@@ -9,5 +9,5 @@ OPTION(BUILD_LIBNURBS_DOXYGEN "Create doxygen documentation for developers" OFF)
 
 find_package(ZLIB)
 
-#ADD_SUBDIRECTORY(src)
+ADD_SUBDIRECTORY(src)
 ADD_SUBDIRECTORY(doc)
