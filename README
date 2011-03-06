@@ -1,0 +1,76 @@
+libnurbs is a C++ library implementing routines for creating, manipulating and converting
+Non-Uniform Rational BSplines (NURBS) curves and surfaces.
+
+
+(eventually this file will get more coherent - for now it's more or less a scratchpad)
+
+
+There are several other open source libraries and programs that can be examined for useful
+features, which is probably the second step after architecting the overall API.  Their
+utility will depend on the eventual license selected for libnurbs - if we wish to use
+Modified BSD, the options are much more restricted.  GPL is definitely a no-go due to
+projected use of libnurbs in non-GPL projects.
+
+BSD licensed:
+Ayam  (by far the most likely to have new and useful features - Ayam is a nurbs modeler)
+http://ayam.sourceforge.net/
+
+LGPL:
+varkon
+http://varkon.sourceforge.net/
+
+Nurbana (the original, not clear if Blender's modifications are still LGPL)
+http://sourceforge.net/projects/nurbana/
+
+gul (need to check whether individual parts are GPL or LGPL...)
+http://sourceforge.net/projects/gul/
+
+NOT USABLE (due to GPL licensing):
+
+SISL   (appear to be very specific commercial reasons for use of GPL)
+http://www.sintef.no/Informasjons--og-kommunikasjonsteknologi-IKT/Anvendt-matematikk/Fagomrader/Geometri/Prosjekter/The-SISL-Nurbs-Library/SISL-Homepage/
+(note however that the grouping of functions they outline may still be of use in terms of guilding API design conceptually, even if we can't use code directly:
+http://www.sintef.no/Informasjons--og-kommunikasjonsteknologi-IKT/Anvendt-matematikk/Fagomrader/Geometri/Prosjekter/The-SISL-Nurbs-Library/SISL-Functionality/ )
+
+libSNL (contacted author, prefers to remain GPL)
+
+
+Need to check license:
+
+snurbs
+(included in gul - can't seem to find another online source for this one)
+
+dcnurbs
+http://www.axlen.com/ , specifically http://axlen.com/dc/dcnurbs-0.0.0.tar.gz
+
+
+
+*******************************************************************************************
+           
+	   Structure and Historical Background - a.k.a Why libnurbs?
+
+*******************************************************************************************
+
+libnurbs uses as its foundation the openNURBS library from Robert McNeel & Associates,
+who also develop the Rhino modeling software.  Because the openNURBS code is used in Rhino
+it benefits from the testing and debugging required to produce a quality commercial modeler.
+Rather than attempt to re-invent the wheel or build from the less extensively tested 
+NURBS++ code as a foundation, libnurbs will build on the abilities openNURBS.
+
+openNURBS itself does not include the more complex geometric manipulation routines required
+for general NURBS editing and conversion - those are features of the commercial Rhino SDK.
+The primary purpose of the openNURBS toolkit is to improve generally the ability of
+software to reliably transfer 3-D geometry (per http://www.opennurbs.org/faq.htm).  The
+Rhino developers already have the more advanced capabilities they need, and advanced editing
+abilities are out of scope for the openNURBS project itself.  Since new features related
+to a broader range of NURBS capabilities don't fit in the openNURBS project, a new project
+is required - libnurbs.
+
+The current libnurbs effort diverges from the original NURBS++ library associated with the
+libnurbs sourceforge project in its use of openNURBS, although the overall goal remains 
+essentially the same.  After the basic framework has been built, abilities implmented in 
+NURBS++ but not present in openNURBS will be migrated/re-implemented as appropriate
+into libnurbs (if we decide to not use LGPL, the original NURBS++ code will not be used as
+the current developer does not have permission to re-license the code - if the original
+devs can be reached we might inquire but so far they have not been reachable.)
+
