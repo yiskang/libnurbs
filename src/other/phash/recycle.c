@@ -15,6 +15,8 @@ This also decreases memory fragmentation, and freeing structures
 
 #include <string.h>
 #include <stdlib.h>
+#include <stdint.h>
+#include <inttypes.h>
 
 #ifndef STANDARD
 # include "standard.h"
@@ -39,7 +41,7 @@ void  refree(r)
 struct reroot *r;
 {
    recycle *temp;
-   if (temp = r->list) while (r->list)
+   if ((temp = r->list)) while (r->list)
    {
       temp = r->list->next;
       free((char *)r->list);
@@ -75,13 +77,13 @@ struct reroot *r;
 }
 
 char   *remalloc(len, purpose)
-size_t  len;
+uint32_t len;
 char   *purpose;
 {
   char *x = (char *)malloc(len);
   if (!x)
   {
-    fprintf(stderr, "malloc of %d failed for %s\n", 
+    fprintf(stderr, "malloc of %"PRIu32" failed for %s\n", 
 	    len, purpose);
     exit(SUCCESS);
   }

@@ -48,7 +48,8 @@ determined a perfect hash for the whole set of keys.
 
 #include <string.h>
 #include <stdlib.h>
-
+#include <stdint.h>
+#include <inttypes.h>
 #ifndef STANDARD
 #include "standard.h"
 #endif
@@ -137,17 +138,17 @@ hashform *form;
   case INT_HT:
     if (key1->hash_k == key2->hash_k)
     {
-      fprintf(stderr, "perfect.c: Duplicate keys!  %.8lx\n", key1->hash_k);
+      fprintf(stderr, "perfect.c: Duplicate keys!  %"PRIx32".8\n", key1->hash_k);
       exit(SUCCESS);
     }
     break;
   case AB_HT:
-    fprintf(stderr, "perfect.c: Duplicate keys!  %.8lx %.8lx\n",
+    fprintf(stderr, "perfect.c: Duplicate keys!  %"PRIx32".8 %"PRIx32".8\n",
 	    key1->a_k, key1->b_k);
     exit(SUCCESS);
     break;
   default:
-    fprintf(stderr, "perfect.c: Illegal hash type %ld\n", (ub4)form->hashtype);
+    fprintf(stderr, "perfect.c: Illegal hash type %"PRIu32"\n", (ub4)form->hashtype);
     exit(SUCCESS);
     break;
   }
@@ -223,7 +224,7 @@ gencode  *final;                          /* output, code for the final hash */
     sprintf(final->line[0], 
 	    "  ub4 i,state[CHECKSTATE],rsl;\n");
     sprintf(final->line[1], 
-	    "  for (i=0; i<CHECKSTATE; ++i) state[i]=0x%lx;\n",initlev);
+	    "  for (i=0; i<CHECKSTATE; ++i) state[i]=0x%"PRIx32";\n",initlev);
     sprintf(final->line[2],
 	    "  checksum(key, len, state);\n");
     sprintf(final->line[3], 
@@ -243,7 +244,7 @@ gencode  *final;                          /* output, code for the final hash */
     }
     final->used = 2;
     sprintf(final->line[0], 
-	    "  ub4 rsl, val = lookup(key, len, 0x%lx);\n", initlev);
+	    "  ub4 rsl, val = lookup(key, len, 0x%"PRIx32");\n", initlev);
     if (smax <= 1)
     {
       sprintf(final->line[1], "  rsl = 0;\n");
@@ -254,12 +255,12 @@ gencode  *final;                          /* output, code for the final hash */
     }
     else if (blen < USE_SCRAMBLE)
     {
-      sprintf(final->line[1], "  rsl = ((val>>%ld)^tab[val&0x%x]);\n",
+      sprintf(final->line[1], "  rsl = ((val>>%"PRIu32")^tab[val&0x%x]);\n",
 	      UB4BITS-mylog2(alen), blen-1);
     }
     else
     {
-      sprintf(final->line[1], "  rsl = ((val>>%ld)^scramble[tab[val&0x%x]]);\n",
+      sprintf(final->line[1], "  rsl = ((val>>%"PRIu32")^scramble[tab[val&0x%x]]);\n",
 	      UB4BITS-mylog2(alen), blen-1);
     }
   }
@@ -301,12 +302,12 @@ gencode  *final;                            /* generated code for final hash */
   }
   else if (blen < USE_SCRAMBLE)
   {
-    sprintf(final->line[0], "  ub4 rsl = ((val & 0x%lx) ^ tab[val >> %ld]);\n",
+    sprintf(final->line[0], "  ub4 rsl = ((val & 0x%"PRIx32") ^ tab[val >> %"PRIu32"]);\n",
 	    amask, UB4BITS-blog);
   }
   else
   {
-    sprintf(final->line[0], "  ub4 rsl = ((val & 0x%lx) ^ scramble[tab[val >> %ld]]);\n",
+    sprintf(final->line[0], "  ub4 rsl = ((val & 0x%"PRIx32") ^ scramble[tab[val >> %"PRIu32"]]);\n",
 	    amask, UB4BITS-blog);
   }
 }
@@ -431,7 +432,7 @@ int     rollback;          /* FALSE applies augmenting path, TRUE rolls back */
       else if (tabh[hash].key_h)
       {
 	/* very rare: roll back any changes */
-	(void *)apply(tabb, tabh, tabq, blen, scramble, tail, TRUE);
+	apply(tabb, tabh, tabq, blen, scramble, tail, TRUE);
 	return FALSE;                                  /* failure, collision */
       }
       tabh[hash].key_h = mykey;
@@ -575,7 +576,7 @@ hashform *form;
 	if (!augment(tabb, tabh, tabq, blen, scramble, smax, &tabb[i], nkeys, 
 		     i+1, form))
 	{
-	  printf("fail to map group of size %ld for tab size %ld\n", j, blen);
+	  printf("fail to map group of size %"PRIu32" for tab size %"PRIu32"\n", j, blen);
 	  return FALSE;
 	}
 
@@ -919,7 +920,7 @@ hashform *form;                                           /* user directives */
       continue;                             /* two keys have same (a,b) pair */
     }
 
-    printf("found distinct (A,B) on attempt %ld\n", trysalt);
+    printf("found distinct (A,B) on attempt %"PRIu32"\n", trysalt);
 
     /* Given distinct (A,B) for all keys, build a perfect hash */
     if (!perfect(*tabb, tabh, tabq, *blen, *smax, scramble, nkeys, form))
@@ -950,7 +951,7 @@ hashform *form;                                           /* user directives */
     break;
   }
 
-  printf("built perfect hash table of size %ld\n", *blen);
+  printf("built perfect hash table of size %"PRIu32"\n", *blen);
 
   /* free working memory */
   free((void *)tabh);

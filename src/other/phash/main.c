@@ -13,6 +13,8 @@ Broke driver, main and usage_error out of perfect.c to allow building a library
 
 #include <string.h>
 #include <stdlib.h>
+#include <stdint.h>
+#include <inttypes.h>
 
 #ifndef STANDARD
 #include "standard.h"
@@ -51,19 +53,19 @@ hashform  *form;                                          /* user directives */
     mykey = (key *)renew(keyroot);
     if (form->mode == AB_HM)
     {
-      sscanf(mytext, "%lx %lx ", &mykey->a_k, &mykey->b_k);
+      sscanf(mytext, "%"PRIx32" %"PRIx32" ", &mykey->a_k, &mykey->b_k);
     }
     else if (form->mode == ABDEC_HM)
     {
-      sscanf(mytext, "%ld %ld ", &mykey->a_k, &mykey->b_k);
+      sscanf(mytext, "%"PRIu32" %"PRIu32" ", &mykey->a_k, &mykey->b_k);
     }
     else if (form->mode == HEX_HM)
     {
-      sscanf(mytext, "%lx ", &mykey->hash_k);
+      sscanf(mytext, "%"PRIx32" ", &mykey->hash_k);
     }
     else if (form->mode == DECIMAL_HM)
     {
-      sscanf(mytext, "%ld ", &mykey->hash_k);
+      sscanf(mytext, "%"PRIu32" ", &mykey->hash_k);
     }
     else
     {
@@ -109,15 +111,15 @@ ub4  salt;
 	  fprintf(f, "extern ub4 scramble[];\n");
       }
     }
-    fprintf(f, "#define PHASHLEN 0x%lx  /* length of hash mapping table */\n",
+    fprintf(f, "#define PHASHLEN 0x%"PRIx32"  /* length of hash mapping table */\n",
 	    blen);
   }
-  fprintf(f, "#define PHASHNKEYS %ld  /* How many keys were hashed */\n",
+  fprintf(f, "#define PHASHNKEYS %"PRIu32"  /* How many keys were hashed */\n",
           nkeys);
-  fprintf(f, "#define PHASHRANGE %ld  /* Range any input might map to */\n",
+  fprintf(f, "#define PHASHRANGE %"PRIu32"  /* Range any input might map to */\n",
           smax);
   fprintf(f, "#define PHASHSALT 0x%.8lx /* internal, initialize normal hash */\n",
-          salt*0x9e3779b9);
+          (unsigned long)salt*0x9e3779b9);
   fprintf(f, "\n");
   fprintf(f, "ub4 phash();\n");
   fprintf(f, "\n");
@@ -156,7 +158,7 @@ hashform *form;                                           /* user directives */
     {
       fprintf(f, "ub4 scramble[] = {\n");
       for (i=0; i<=UB1MAXVAL; i+=4)
-        fprintf(f, "0x%.8lx, 0x%.8lx, 0x%.8lx, 0x%.8lx,\n",
+        fprintf(f, "0x%"PRIx32".8, 0x%"PRIx32".8, 0x%"PRIx32".8, 0x%"PRIx32".8,\n",
                 scramble[i+0], scramble[i+1], scramble[i+2], scramble[i+3]);
     }
     else
@@ -164,7 +166,7 @@ hashform *form;                                           /* user directives */
       fprintf(f, "ub2 scramble[] = {\n");
       for (i=0; i<=UB1MAXVAL; i+=8)
         fprintf(f, 
-"0x%.4lx, 0x%.4lx, 0x%.4lx, 0x%.4lx, 0x%.4lx, 0x%.4lx, 0x%.4lx, 0x%.4lx,\n",
+"0x%"PRIx32".4, 0x%"PRIx32".4, 0x%"PRIx32".4, 0x%"PRIx32".4, 0x%"PRIx32".4, 0x%"PRIx32".4, 0x%"PRIx32".4, 0x%"PRIx32".4,\n",
                 scramble[i+0], scramble[i+1], scramble[i+2], scramble[i+3],
                 scramble[i+4], scramble[i+5], scramble[i+6], scramble[i+7]);
     }
@@ -187,7 +189,7 @@ hashform *form;                                           /* user directives */
     else if (blen <= 1024)
     {
       for (i=0; i<blen; i+=16)
-	fprintf(f, "%ld,%ld,%ld,%ld,%ld,%ld,%ld,%ld,%ld,%ld,%ld,%ld,%ld,%ld,%ld,%ld,\n",
+	fprintf(f, "%"PRIu32",%"PRIu32",%"PRIu32",%"PRIu32",%"PRIu32",%"PRIu32",%"PRIu32",%"PRIu32",%"PRIu32",%"PRIu32",%"PRIu32",%"PRIu32",%"PRIu32",%"PRIu32",%"PRIu32",%"PRIu32",\n",
 		scramble[tab[i+0].val_b], scramble[tab[i+1].val_b], 
 		scramble[tab[i+2].val_b], scramble[tab[i+3].val_b], 
 		scramble[tab[i+4].val_b], scramble[tab[i+5].val_b], 
@@ -200,7 +202,7 @@ hashform *form;                                           /* user directives */
     else if (blen < USE_SCRAMBLE)
     {
       for (i=0; i<blen; i+=8)
-	fprintf(f, "%ld,%ld,%ld,%ld,%ld,%ld,%ld,%ld,\n",
+	fprintf(f, "%"PRIu32",%"PRIu32",%"PRIu32",%"PRIu32",%"PRIu32",%"PRIu32",%"PRIu32",%"PRIu32",\n",
 		scramble[tab[i+0].val_b], scramble[tab[i+1].val_b], 
 		scramble[tab[i+2].val_b], scramble[tab[i+3].val_b], 
 		scramble[tab[i+4].val_b], scramble[tab[i+5].val_b], 
@@ -209,7 +211,7 @@ hashform *form;                                           /* user directives */
     else 
     {
       for (i=0; i<blen; i+=16)
-	fprintf(f, "%ld,%ld,%ld,%ld,%ld,%ld,%ld,%ld,%ld,%ld,%ld,%ld,%ld,%ld,%ld,%ld,\n",
+	fprintf(f, "%"PRIu32",%"PRIu32",%"PRIu32",%"PRIu32",%"PRIu32",%"PRIu32",%"PRIu32",%"PRIu32",%"PRIu32",%"PRIu32",%"PRIu32",%"PRIu32",%"PRIu32",%"PRIu32",%"PRIu32",%"PRIu32",\n",
 		tab[i+0].val_b, tab[i+1].val_b, 
 		tab[i+2].val_b, tab[i+3].val_b, 
 		tab[i+4].val_b, tab[i+5].val_b, 
@@ -245,7 +247,7 @@ hashform *form;                                           /* user directives */
   }
   fprintf(f, "{\n");
   for (i=0; i<final->used; ++i)
-    fprintf(f, final->line[i]);
+    fprintf(f, "%s", final->line[i]);
   fprintf(f, "  return rsl;\n");
   fprintf(f, "}\n");
   fprintf(f, "\n");
@@ -288,7 +290,7 @@ hashform *form;                                           /* user directives */
 
   /* read in the list of keywords */
   getkeys(&keys, &nkeys, textroot, keyroot, form);
-  printf("Read in %ld keys\n",nkeys);
+  printf("Read in %"PRIu32" keys\n",nkeys);
 
   /* find the hash */
   findhash(&tab, &alen, &blen, &salt, &final, 
