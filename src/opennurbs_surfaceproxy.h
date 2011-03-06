@@ -459,7 +459,7 @@ public:
 
 private:
 
-  ON_OBJECT_DECLARE(ON_SurfaceProxy);
+  ON_OBJECT_DECLARE(ON_SurfaceProxy)
 };
 
 #endif

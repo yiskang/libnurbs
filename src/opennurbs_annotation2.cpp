@@ -2982,7 +2982,7 @@ bool ON_RadialDimension2::CreateFromV2(
 
 class ON_AngularDimension2Extra : public ON_UserData
 {
-  ON_OBJECT_DECLARE(ON_AngularDimension2Extra);
+  ON_OBJECT_DECLARE(ON_AngularDimension2Extra)
 public:
   static ON_AngularDimension2Extra* AngularDimensionExtra(ON_AngularDimension2* pDim/*, bool bCreate*/);
   static const ON_AngularDimension2Extra* AngularDimensionExtra(const ON_AngularDimension2* pDim/*, bool bCreate*/);
@@ -6756,9 +6756,9 @@ bool ON_Annotation2::GetTextPoint( ON_2dPoint& text_2d_point ) const
 class /*NEVER PUT THIS CLASS IN THE SDK*/ ON_AnnotationTextFormula : public ON_UserData
 {
 #if !defined(BOZO_VACCINE_699FCC4262D4488c9109F1B7A37CE926)
-#error You're a bozo!
+#error You are a bozo!
 #endif
-  ON_OBJECT_DECLARE(ON_AnnotationTextFormula);
+  ON_OBJECT_DECLARE(ON_AnnotationTextFormula)
 public:
   ON_AnnotationTextFormula();
   ~ON_AnnotationTextFormula();

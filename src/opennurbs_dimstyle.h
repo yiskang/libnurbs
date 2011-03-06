@@ -18,7 +18,7 @@
 
 class ON_CLASS ON_DimStyle : public ON_Object
 {
-  ON_OBJECT_DECLARE(ON_DimStyle);
+  ON_OBJECT_DECLARE(ON_DimStyle)
 
 public:
   enum eArrowType
@@ -30,7 +30,7 @@ public:
     arrow = 4,
     rectangle = 5,
     longtriangle = 6,     // 4:1
-    longertriangle = 7,   // 6:1
+    longertriangle = 7   // 6:1
   };
 
   ON_DimStyle();

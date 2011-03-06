@@ -24,7 +24,7 @@
 
 class ON_CLASS ON_PointCloud : public ON_Geometry
 {
-  ON_OBJECT_DECLARE(ON_PointCloud);
+  ON_OBJECT_DECLARE(ON_PointCloud)
 
 public:
   ON_PointCloud();

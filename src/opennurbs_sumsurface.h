@@ -21,7 +21,7 @@ class ON_SumSurface;
 // surface of revolution
 class ON_CLASS ON_SumSurface : public ON_Surface
 {
-  ON_OBJECT_DECLARE(ON_SumSurface);
+  ON_OBJECT_DECLARE(ON_SumSurface)
 
 public:
   // virtual ON_Object::DestroyRuntimeCache override

@@ -1444,8 +1444,6 @@ void ON_Sort(
         void* context
         );
 
-/* ON_hsort declarations moved to opennurbs_array_defs.h line 585 to placate clang */
-
 /*
 Description:
   Quick sort an array

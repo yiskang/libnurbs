@@ -23,7 +23,7 @@
 // 
 class ON_CLASS ON_Material : public ON_Object
 {
-  ON_OBJECT_DECLARE(ON_Material);
+  ON_OBJECT_DECLARE(ON_Material)
 
 public:
   static double MaxShine();			// maximum value of shine exponent

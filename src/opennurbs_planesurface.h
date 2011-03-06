@@ -20,7 +20,7 @@ class ON_PlaneSurface;
 
 class ON_CLASS ON_PlaneSurface : public ON_Surface
 {
-  ON_OBJECT_DECLARE(ON_PlaneSurface);
+  ON_OBJECT_DECLARE(ON_PlaneSurface)
 
 public:
   ON_PlaneSurface();
@@ -664,7 +664,7 @@ protected:
 
 class ON_CLASS ON_ClippingPlaneSurface : public ON_PlaneSurface
 {
-  ON_OBJECT_DECLARE(ON_ClippingPlaneSurface);
+  ON_OBJECT_DECLARE(ON_ClippingPlaneSurface)
 public:
   ON_ClippingPlaneSurface();
   ON_ClippingPlaneSurface(const ON_Plane& src);

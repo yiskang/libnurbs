@@ -18,7 +18,7 @@
 
 class ON_CLASS ON_Layer : public ON_Object
 {
-  ON_OBJECT_DECLARE(ON_Layer);
+  ON_OBJECT_DECLARE(ON_Layer)
 
 public:
 

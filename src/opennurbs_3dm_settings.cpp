@@ -2673,7 +2673,7 @@ void ON_3dmSettings::Default()
 ON_3dmSettings::ON_3dmSettings()
 {
   Default();
-};
+}
 
 ON_3dmSettings::~ON_3dmSettings()
 {

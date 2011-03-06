@@ -156,7 +156,7 @@ class /* DO NOT EXPORT THIS CLASS */ ON_MeshNgonUserData : public ON_UserData
 #if !defined(ON_NGON_BOZO_VACCINE)
 #error You are a bozo!  Read the comments.
 #endif
-  ON_OBJECT_DECLARE(ON_MeshNgonUserData);
+  ON_OBJECT_DECLARE(ON_MeshNgonUserData)
 
 public:
   ON_MeshNgonUserData();

@@ -19,7 +19,7 @@
 class ON_PolylineCurve;
 class ON_CLASS ON_PolylineCurve : public ON_Curve
 {
-  ON_OBJECT_DECLARE(ON_PolylineCurve);
+  ON_OBJECT_DECLARE(ON_PolylineCurve)
 
 public:
   ON_PolylineCurve();

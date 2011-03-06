@@ -19,7 +19,7 @@
 class ON_CurveOnSurface;
 class ON_CLASS ON_CurveOnSurface : public ON_Curve
 {
-  ON_OBJECT_DECLARE(ON_CurveOnSurface);
+  ON_OBJECT_DECLARE(ON_CurveOnSurface)
 
 public:
   ON_CurveOnSurface();

@@ -38,7 +38,7 @@ ON_DECL double ON_HairlinePrintWidth();
 
 class ON_CLASS ON_Linetype : public ON_Object
 {
-  ON_OBJECT_DECLARE(ON_Linetype);
+  ON_OBJECT_DECLARE(ON_Linetype)
 
 public:
 

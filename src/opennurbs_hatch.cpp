@@ -22,7 +22,7 @@
 
 class ON_HatchExtra : public ON_UserData
 {
-  ON_OBJECT_DECLARE(ON_HatchExtra);
+  ON_OBJECT_DECLARE(ON_HatchExtra)
 public:
   static ON_HatchExtra* HatchExtension(ON_Hatch* pHatch, bool bCreate);
   static const ON_HatchExtra* HatchExtension(const ON_Hatch* pHatch, bool bCreate);

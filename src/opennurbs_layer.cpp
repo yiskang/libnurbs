@@ -826,7 +826,7 @@ class /*NEVER EXPORT THIS CLASS DEFINITION*/ ON__LayerExtensions : public ON_Use
 #if !defined(ON_BOZO_VACCINE_3E4904E6E9304fbcAA42EBD407AEFE3B)
 #error Never copy this class definition or put this definition in a header file!
 #endif
-  ON_OBJECT_DECLARE(ON__LayerExtensions);
+  ON_OBJECT_DECLARE(ON__LayerExtensions)
 
 public:
   ON__LayerExtensions();

@@ -415,7 +415,7 @@ public:
     dtDimRadius,
     dtLeader,
     dtTextBlock,
-    dtDimOrdinate,
+    dtDimOrdinate
   };
 
   static eAnnotationType AnnotationType(int); // convert integer to eAnnotationType enum
@@ -427,7 +427,7 @@ public:
     dtNormal = 0,
     dtHorizontal = 1,
     dtAboveLine = 2,
-    dtInLine = 3,
+    dtInLine = 3
   };
 
   static eTextDisplayMode TextDisplayMode( int);
@@ -913,7 +913,7 @@ public:
                                 // the camera frame x,y,z direction must be
                                 // world x,y,z (which means the camera direction
                                 // is always (0,0,-1)).  
-    nested_view_type = 2,       // This view is a "model" view that is nested
+    nested_view_type = 2        // This view is a "model" view that is nested
                                 // in another view.  The nesting and parent
                                 // information is saved in ON_3dmView.
   };
@@ -1051,7 +1051,7 @@ public:
     ctOnsurface,
     ctProxy,
     ctPolycurve,
-    ctPolyline,
+    ctPolyline
   };
 
 

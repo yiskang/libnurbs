@@ -83,7 +83,7 @@ public:
 // Extension to ON_TextEntity added 12/10/2009 for Text background drawing
 class ON_CLASS ON_TextExtra : public ON_UserData
 {
-  ON_OBJECT_DECLARE(ON_TextExtra);
+  ON_OBJECT_DECLARE(ON_TextExtra)
 public:
 
   ON_TextExtra();
@@ -147,7 +147,7 @@ public:
 
 class ON_CLASS ON_DimensionExtra : public ON_UserData
 {
-  ON_OBJECT_DECLARE(ON_DimensionExtra);
+  ON_OBJECT_DECLARE(ON_DimensionExtra)
 public:
 
   ON_DimensionExtra();
@@ -263,7 +263,7 @@ public:
 */
 class ON_CLASS ON_Annotation2 : public ON_Geometry
 {
-  ON_OBJECT_DECLARE(ON_Annotation2);
+  ON_OBJECT_DECLARE(ON_Annotation2)
 
   // UNICODE symbol code to use for degrees, radius, diameter and plus/minus in dimensions
   enum SYMBOLS
@@ -271,7 +271,7 @@ class ON_CLASS ON_Annotation2 : public ON_Geometry
     degreesym = 176,
     radiussym = L'R',
     diametersym = 216,
-    plusminussym = 177,
+    plusminussym = 177
   };
 
 public:
@@ -370,7 +370,7 @@ public:
     tjMiddleRight  = tjMiddle | tjRight,
     tjTopLeft      = tjTop    | tjLeft,
     tjTopCenter    = tjTop    | tjCenter,
-    tjTopRight     = tjTop    | tjRight,
+    tjTopRight     = tjTop    | tjRight
   };
 
   /*
@@ -996,7 +996,7 @@ public:
 // Subclass of ON_Annotation2 to provide linear dimensions
 class ON_CLASS ON_LinearDimension2 : public ON_Annotation2
 {
-  ON_OBJECT_DECLARE(ON_LinearDimension2);
+  ON_OBJECT_DECLARE(ON_LinearDimension2)
 
 public:
 
@@ -1206,7 +1206,7 @@ public:
 // class ON_RadialDimension2
 class ON_CLASS ON_RadialDimension2 : public ON_Annotation2
 {
-  ON_OBJECT_DECLARE(ON_RadialDimension2);
+  ON_OBJECT_DECLARE(ON_RadialDimension2)
 
 public:
 
@@ -1244,7 +1244,7 @@ public:
     dim_pt_count    = 4, // number of m_points[] in a radial dim
 
     // Points calculated from values in m_points[]
-    text_pivot_pt = 10000, // start/end of dimension text at tail
+    text_pivot_pt = 10000 // start/end of dimension text at tail
   };
 
   ON_RadialDimension2();
@@ -1375,7 +1375,7 @@ public:
 // class ON_AngularDimension2
 class ON_CLASS ON_AngularDimension2 : public ON_Annotation2
 {
-  ON_OBJECT_DECLARE(ON_AngularDimension2);
+  ON_OBJECT_DECLARE(ON_AngularDimension2)
 
 public:
 
@@ -1671,7 +1671,7 @@ public:
 */
 class ON_CLASS ON_OrdinateDimension2 : public ON_Annotation2
 {
-  ON_OBJECT_DECLARE(ON_OrdinateDimension2);
+  ON_OBJECT_DECLARE(ON_OrdinateDimension2)
 
 public:
 
@@ -1737,7 +1737,7 @@ public:
   enum DIRECTION
   {
     x = 0,  // measures horizontally
-    y = 1,  // measures vertically
+    y = 1   // measures vertically
   };
 
   ON_OrdinateDimension2();
@@ -1917,7 +1917,7 @@ public:
 // class ON_TextEntity2
 class ON_CLASS ON_TextEntity2 : public ON_Annotation2
 {
-  ON_OBJECT_DECLARE(ON_TextEntity2);
+  ON_OBJECT_DECLARE(ON_TextEntity2)
 
 public:
   ON_TextEntity2();
@@ -2006,7 +2006,7 @@ public:
 // class ON_Leader2
 class ON_CLASS ON_Leader2 : public ON_Annotation2
 {
-  ON_OBJECT_DECLARE(ON_Leader2);
+  ON_OBJECT_DECLARE(ON_Leader2)
 
 public:
 
@@ -2147,7 +2147,7 @@ public:
 */
 class ON_CLASS ON_TextDot : public ON_Geometry
 {
-  ON_OBJECT_DECLARE(ON_TextDot);
+  ON_OBJECT_DECLARE(ON_TextDot)
 
 public:
   ON_TextDot();

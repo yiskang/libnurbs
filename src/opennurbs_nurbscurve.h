@@ -25,7 +25,7 @@
 class ON_NurbsCurve;
 class ON_CLASS ON_NurbsCurve : public ON_Curve
 {
-  ON_OBJECT_DECLARE(ON_NurbsCurve);
+  ON_OBJECT_DECLARE(ON_NurbsCurve)
 
 public:
   /*

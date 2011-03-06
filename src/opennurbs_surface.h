@@ -56,7 +56,7 @@ class ON_Surface;
 
 class ON_CLASS ON_Surface : public ON_Geometry
 {
-  ON_OBJECT_DECLARE(ON_Surface);
+  ON_OBJECT_DECLARE(ON_Surface)
 
 public:
   // virtual ON_Object::DestroyRuntimeCache override

@@ -25,7 +25,7 @@ See Also:
 */
 class ON_CLASS ON_InstanceDefinition : public ON_Geometry
 {
-  ON_OBJECT_DECLARE(ON_InstanceDefinition);
+  ON_OBJECT_DECLARE(ON_InstanceDefinition)
 
 public:
 
@@ -217,7 +217,7 @@ See Also:
 */
 class ON_CLASS ON_InstanceRef : public ON_Geometry
 {
-  ON_OBJECT_DECLARE(ON_InstanceRef);
+  ON_OBJECT_DECLARE(ON_InstanceRef)
 
 public:
   ON_InstanceRef();

@@ -840,7 +840,7 @@ ON_DLL_TEMPLATE template class ON_CLASS ON_ClassArray<ON_TextureCoordinates>;
 
 class ON_CLASS ON_Mesh : public ON_Geometry
 {
-  ON_OBJECT_DECLARE(ON_Mesh);
+  ON_OBJECT_DECLARE(ON_Mesh)
 public:
   ON_Mesh();
   ON_Mesh(
@@ -2195,7 +2195,7 @@ private:
 
 class ON_CLASS ON_MeshVertexRef : public ON_Geometry
 {
-  ON_OBJECT_DECLARE(ON_MeshVertexRef);
+  ON_OBJECT_DECLARE(ON_MeshVertexRef)
 public:
   ON_MeshVertexRef();
   ~ON_MeshVertexRef();
@@ -2268,7 +2268,7 @@ public:
 
 class ON_CLASS ON_MeshEdgeRef : public ON_Geometry
 {
-  ON_OBJECT_DECLARE(ON_MeshEdgeRef);
+  ON_OBJECT_DECLARE(ON_MeshEdgeRef)
 public:
   ON_MeshEdgeRef();
   ~ON_MeshEdgeRef();
@@ -2333,7 +2333,7 @@ public:
 
 class ON_CLASS ON_MeshFaceRef : public ON_Geometry
 {
-  ON_OBJECT_DECLARE(ON_MeshFaceRef);
+  ON_OBJECT_DECLARE(ON_MeshFaceRef)
 public:
   ON_MeshFaceRef();
   ~ON_MeshFaceRef();

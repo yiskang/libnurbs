@@ -29,7 +29,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 class ON_CLASS ON_Viewport : public ON_Geometry 
 {
-	ON_OBJECT_DECLARE( ON_Viewport );
+	ON_OBJECT_DECLARE( ON_Viewport )
 public:
 
   // Default z=up perspective camera direction

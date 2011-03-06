@@ -18,7 +18,7 @@
 
 class ON_CLASS ON_Light : public ON_Geometry
 {
-  ON_OBJECT_DECLARE(ON_Light);
+  ON_OBJECT_DECLARE(ON_Light)
 
 public:
   ON_Light();

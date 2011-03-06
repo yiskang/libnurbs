@@ -58,7 +58,7 @@ can have their own copy of a dimension style to override some settings
 // Don't put this extension class in a header file or export it.
 class ON_DimStyleExtra : public ON_UserData
 {
-  ON_OBJECT_DECLARE(ON_DimStyleExtra);
+  ON_OBJECT_DECLARE(ON_DimStyleExtra)
 public:
   // 26 Oct 2010 - Changed to always create ON_DimStyleExtra
   static ON_DimStyleExtra* DimStyleExtension( ON_DimStyle* pDimStyle);

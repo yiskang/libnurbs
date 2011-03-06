@@ -33,7 +33,7 @@ Details:
 */
 class ON_CLASS ON_ArcCurve : public ON_Curve
 {
-  ON_OBJECT_DECLARE(ON_ArcCurve);
+  ON_OBJECT_DECLARE(ON_ArcCurve)
 
 public:
   ON_ArcCurve();

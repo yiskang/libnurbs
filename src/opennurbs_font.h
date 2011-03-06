@@ -18,7 +18,7 @@
 
 class ON_CLASS ON_Font : public ON_Object
 {
-  ON_OBJECT_DECLARE(ON_Font);
+  ON_OBJECT_DECLARE(ON_Font)
 public:
   ON_Font();
   ~ON_Font();

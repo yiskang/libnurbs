@@ -20,7 +20,7 @@ class ON_PolyEdgeSegment;
 
 class ON_CLASS ON_PolyEdgeCurve : public ON_PolyCurve
 {
-  ON_OBJECT_DECLARE(ON_PolyEdgeCurve);
+  ON_OBJECT_DECLARE(ON_PolyEdgeCurve)
 
 public:
   ON_PolyEdgeCurve();
@@ -204,7 +204,7 @@ public:
 
 class ON_CLASS ON_PolyEdgeSegment : public ON_CurveProxy
 {
-  ON_OBJECT_DECLARE(ON_PolyEdgeSegment);
+  ON_OBJECT_DECLARE(ON_PolyEdgeSegment)
 public:
   // construction
 

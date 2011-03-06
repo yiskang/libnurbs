@@ -41,7 +41,7 @@ class ON_CLASS ON_Geometry : public ON_Object
   // in a .cpp file.
   //
   // See the definition of ON_Object for details.
-  ON_OBJECT_DECLARE(ON_Geometry);
+  ON_OBJECT_DECLARE(ON_Geometry)
 
 public:
   ON_Geometry();

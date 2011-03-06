@@ -19,7 +19,7 @@
 // surface of revolution
 class ON_CLASS ON_RevSurface : public ON_Surface
 {
-  ON_OBJECT_DECLARE(ON_RevSurface);
+  ON_OBJECT_DECLARE(ON_RevSurface)
 
 public:
   // virtual ON_Object::DestroyRuntimeCache override

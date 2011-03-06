@@ -39,7 +39,7 @@ Remarks:
 
 class ON_CLASS ON_3dmObjectAttributes : public ON_Object
 {
-  ON_OBJECT_DECLARE(ON_3dmObjectAttributes);
+  ON_OBJECT_DECLARE(ON_3dmObjectAttributes)
 
 public:
   // ON_Object virtual interface.  See ON_Object

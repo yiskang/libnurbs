@@ -47,7 +47,7 @@ public:
   enum eLoopType
   {
     ltOuter = 0,
-    ltInner = 1,
+    ltInner = 1
   };
 
   ON_HatchLoop();
@@ -311,7 +311,7 @@ ON_DLL_TEMPLATE template class ON_CLASS ON_ClassArray<ON_HatchLine>;
 */
 class ON_CLASS ON_HatchPattern : public ON_Object
 {
-  ON_OBJECT_DECLARE( ON_HatchPattern);
+  ON_OBJECT_DECLARE( ON_HatchPattern)
 
 public:
 
@@ -523,7 +523,7 @@ public:
 */
 class ON_CLASS ON_Hatch : public ON_Geometry
 {
-  ON_OBJECT_DECLARE( ON_Hatch);
+  ON_OBJECT_DECLARE( ON_Hatch)
 
 public:
   // Default constructor

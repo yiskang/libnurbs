@@ -247,7 +247,7 @@ int ON_Mesh::GetMeshFaceSideList(
 
 class /* DO NOT copy, move, or export this class */ ON_MeshDoubleVertices : public ON_UserData
 {
-  ON_OBJECT_DECLARE(ON_MeshDoubleVertices);
+  ON_OBJECT_DECLARE(ON_MeshDoubleVertices)
 
 public:
   ON_MeshDoubleVertices();

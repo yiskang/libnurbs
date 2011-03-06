@@ -18,7 +18,7 @@
 
 class ON_CLASS ON_UserData : public ON_Object
 {
-  ON_OBJECT_DECLARE(ON_UserData);
+  ON_OBJECT_DECLARE(ON_UserData)
 public:
   ON_UserData();
   ON_UserData(const ON_UserData&);
@@ -189,7 +189,7 @@ private: // don't look and don't touch - these may change
 
 class ON_CLASS ON_UnknownUserData : public ON_UserData
 {
-  ON_OBJECT_DECLARE(ON_UnknownUserData);
+  ON_OBJECT_DECLARE(ON_UnknownUserData)
   // used to hold user data will application class is not loaded
   // at time data is read
 public:
@@ -262,7 +262,7 @@ public:
 
 class ON_CLASS ON_UserStringList : public ON_UserData
 {
-  ON_OBJECT_DECLARE(ON_UserStringList);
+  ON_OBJECT_DECLARE(ON_UserStringList)
 public:
 
   ON_UserStringList();
@@ -382,7 +382,7 @@ Description:
 */
 class ON_CLASS ON_DocumentUserStringList : public ON_Object
 {
-  ON_OBJECT_DECLARE(ON_DocumentUserStringList);
+  ON_OBJECT_DECLARE(ON_DocumentUserStringList)
 public:
   ON_DocumentUserStringList();
   ~ON_DocumentUserStringList();

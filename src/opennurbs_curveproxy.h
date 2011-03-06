@@ -36,7 +36,7 @@ Details:
 class ON_CurveProxy;
 class ON_CLASS ON_CurveProxy : public ON_Curve
 {
-  ON_OBJECT_DECLARE(ON_CurveProxy);
+  ON_OBJECT_DECLARE(ON_CurveProxy)
 
 public:
   // virtual ON_Object::DestroyRuntimeCache override

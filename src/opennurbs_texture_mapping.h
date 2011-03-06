@@ -36,7 +36,7 @@ typedef bool ( *TEXMAP_BREP_FACE_CLOSEST_POINT )( const ON_BrepFace*, const ON_3
 class ON_CLASS ON_TextureMapping : public ON_Object
 {
 public:
-	ON_OBJECT_DECLARE(ON_TextureMapping);
+	ON_OBJECT_DECLARE(ON_TextureMapping)
 
 	ON_TextureMapping();
 	~ON_TextureMapping();

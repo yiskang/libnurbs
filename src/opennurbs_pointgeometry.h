@@ -112,7 +112,7 @@ public:
   bool IsMorphable() const;
 
 private:
-  ON_OBJECT_DECLARE(ON_Point);
+  ON_OBJECT_DECLARE(ON_Point)
 };
 
 #endif

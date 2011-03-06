@@ -19,7 +19,7 @@
 class ON_LineCurve;
 class ON_CLASS ON_LineCurve : public ON_Curve
 {
-  ON_OBJECT_DECLARE(ON_LineCurve);
+  ON_OBJECT_DECLARE(ON_LineCurve)
 
 public:
   ON_LineCurve();

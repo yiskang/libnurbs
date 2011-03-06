@@ -639,7 +639,6 @@ void ON_hsort(
         );
 
 
-
 template <class T>
 bool ON_SimpleArray<T>::HeapSort( int (*compar)(const T*,const T*) )
 {
@@ -1441,7 +1440,7 @@ int ON_ClassArray<T>::BinarySearch( const T* key, int (*compar)(const T*,const T
 #else
   // for lamer 64 bit compilers
   return found ? ((int)((((ON__UINT64)found) - ((ON__UINT64)m_a))/sizeof(T))) : -1;
-#endif#endif
+#endif
 }
 
 template <class T>

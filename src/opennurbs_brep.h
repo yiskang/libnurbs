@@ -47,7 +47,7 @@ class ON_BrepFace;
 //   points on faces. 
 class ON_CLASS ON_BrepVertex : public ON_Point
 {
-  ON_OBJECT_DECLARE(ON_BrepVertex);
+  ON_OBJECT_DECLARE(ON_BrepVertex)
 
 public:
   // Union available for application use.
@@ -190,7 +190,7 @@ Description:
 */
 class ON_CLASS ON_BrepEdge : public  ON_CurveProxy
 {
-  ON_OBJECT_DECLARE(ON_BrepEdge);
+  ON_OBJECT_DECLARE(ON_BrepEdge)
 public:
 
   // Union available for application use.
@@ -424,7 +424,7 @@ Description:
 */
 class ON_CLASS ON_BrepTrim : public  ON_CurveProxy
 {
-  ON_OBJECT_DECLARE(ON_BrepTrim);
+  ON_OBJECT_DECLARE(ON_BrepTrim)
 
 public:
   void DestroyRuntimeCache( bool bDelete = true );
@@ -830,7 +830,7 @@ private:
 
 class ON_CLASS ON_BrepLoop : public  ON_Geometry
 {
-  ON_OBJECT_DECLARE(ON_BrepLoop);
+  ON_OBJECT_DECLARE(ON_BrepLoop)
 
 public:
   void DestroyRuntimeCache( bool bDelete = true );
@@ -1000,7 +1000,7 @@ private:
 
 class ON_CLASS ON_BrepFace : public ON_SurfaceProxy
 {
-  ON_OBJECT_DECLARE(ON_BrepFace);
+  ON_OBJECT_DECLARE(ON_BrepFace)
 
 public:
   void DestroyRuntimeCache( bool bDelete = true );
@@ -1354,7 +1354,7 @@ public:
 
 class ON_CLASS ON_Brep : public ON_Geometry 
 {
-  ON_OBJECT_DECLARE(ON_Brep);
+  ON_OBJECT_DECLARE(ON_Brep)
 
 public:
   // virtual ON_Object::DestroyRuntimeCache override

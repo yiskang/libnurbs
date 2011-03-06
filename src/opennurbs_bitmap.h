@@ -27,7 +27,7 @@
 class ON_CLASS ON_Bitmap : public ON_Object
 {
   // virtual base class for bitmap objects
-  ON_OBJECT_DECLARE(ON_Bitmap);
+  ON_OBJECT_DECLARE(ON_Bitmap)
 public:
   ON_Bitmap();
   ~ON_Bitmap();
@@ -187,7 +187,7 @@ struct ON_WindowsBITMAPINFO
 
 class ON_CLASS ON_WindowsBitmap : public ON_Bitmap
 {
-  ON_OBJECT_DECLARE(ON_WindowsBitmap);
+  ON_OBJECT_DECLARE(ON_WindowsBitmap)
   // Uncompressed 8 bpp, 24 bpp, or 32 bpp Windows device 
   // independent bitmaps (DIB)
 public:
@@ -406,7 +406,7 @@ Description:
 */
 class ON_CLASS ON_WindowsBitmapEx : public ON_WindowsBitmap
 {
-  ON_OBJECT_DECLARE(ON_WindowsBitmapEx);
+  ON_OBJECT_DECLARE(ON_WindowsBitmapEx)
 public:
   ON_WindowsBitmapEx();
   ~ON_WindowsBitmapEx();
@@ -416,7 +416,7 @@ public:
 
 class ON_CLASS ON_EmbeddedBitmap : public ON_Bitmap
 {
-  ON_OBJECT_DECLARE(ON_EmbeddedBitmap);
+  ON_OBJECT_DECLARE(ON_EmbeddedBitmap)
 public:
   ON_EmbeddedBitmap();
   ~ON_EmbeddedBitmap();

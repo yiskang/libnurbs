@@ -36,7 +36,7 @@
 class ON_PolyCurve;
 class ON_CLASS ON_PolyCurve : public ON_Curve
 {
-  ON_OBJECT_DECLARE(ON_PolyCurve);
+  ON_OBJECT_DECLARE(ON_PolyCurve)
 
 public:
   // virtual ON_Object::DestroyRuntimeCache override

@@ -186,7 +186,7 @@ protected:
 private:
   static ON_3dPoint m_no_point; // prevent crashes when sizes are 0
 
-  ON_OBJECT_DECLARE(ON_PointGrid);
+  ON_OBJECT_DECLARE(ON_PointGrid)
 };
 
 

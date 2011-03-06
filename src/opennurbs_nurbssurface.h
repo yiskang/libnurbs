@@ -60,7 +60,7 @@ class ON_NurbsSurface;
 
 class ON_CLASS ON_NurbsSurface : public ON_Surface
 {
-  ON_OBJECT_DECLARE(ON_NurbsSurface);
+  ON_OBJECT_DECLARE(ON_NurbsSurface)
 
 public:
   /*
@@ -1030,7 +1030,7 @@ public:
 
 class ON_CLASS ON_NurbsCage : public ON_Geometry
 {
-  ON_OBJECT_DECLARE(ON_NurbsCage);
+  ON_OBJECT_DECLARE(ON_NurbsCage)
 
 public:
   ON_NurbsCage();
@@ -1759,7 +1759,7 @@ bool ON_GetCageXform(
 
 class ON_CLASS ON_MorphControl : public ON_Geometry
 {
-  ON_OBJECT_DECLARE(ON_MorphControl);
+  ON_OBJECT_DECLARE(ON_MorphControl)
 
 public:
   ON_MorphControl();

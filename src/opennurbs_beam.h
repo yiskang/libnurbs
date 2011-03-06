@@ -35,7 +35,7 @@ bool ON_GetEndCapTransformation(
 
 class ON_CLASS ON_Extrusion : public ON_Surface
 {
-  ON_OBJECT_DECLARE(ON_Extrusion);
+  ON_OBJECT_DECLARE(ON_Extrusion)
 public:
   ON_Extrusion();
   ON_Extrusion(const ON_Extrusion& src);

@@ -288,7 +288,7 @@ class ON_CLASS ON_OffsetSurface : public ON_SurfaceProxy
   // offset meshes and any other fitting and approximation
   // tools that requires a surface evaluator but do not need
   // NURBS forms, isocurves, and so on.
-  ON_OBJECT_DECLARE(ON_OffsetSurface);
+  ON_OBJECT_DECLARE(ON_OffsetSurface)
 public:
   ON_OffsetSurface();
   ~ON_OffsetSurface();

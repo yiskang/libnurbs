@@ -28,7 +28,7 @@ ON_DLL_TEMPLATE template class ON_CLASS ON_SimpleArray< class ON_Value* >;
 
 class ON_CLASS ON_HistoryRecord : public ON_Object
 {
-  ON_OBJECT_DECLARE(ON_HistoryRecord);
+  ON_OBJECT_DECLARE(ON_HistoryRecord)
 public:
   ON_HistoryRecord();
   ~ON_HistoryRecord();

@@ -20,7 +20,7 @@
 class ON_CLASS ON_AnnotationTextDot : public ON_Point
 {
   // 3d annotation dot with text
-  ON_OBJECT_DECLARE(ON_AnnotationTextDot);
+  ON_OBJECT_DECLARE(ON_AnnotationTextDot)
 public:
   ON_AnnotationTextDot();
   ~ON_AnnotationTextDot();
@@ -69,7 +69,7 @@ public:
 class ON_CLASS ON_AnnotationArrow : public ON_Geometry
 {
   // 3d annotation arrow
-  ON_OBJECT_DECLARE(ON_AnnotationArrow);
+  ON_OBJECT_DECLARE(ON_AnnotationArrow)
 public:
   ON_AnnotationArrow();
   ~ON_AnnotationArrow();
@@ -152,14 +152,14 @@ public:
 
 class ON_CLASS ON_Annotation : public ON_Geometry
 {
-  ON_OBJECT_DECLARE(ON_Annotation);
+  ON_OBJECT_DECLARE(ON_Annotation)
 
   enum SYMBOLS
   {
     degreesym = 176,
     radiussym = 'R',
     diametersym = 216,
-    plusminussym = 177,
+    plusminussym = 177
   };
 
 
@@ -291,7 +291,7 @@ public:
 
 class ON_CLASS ON_LinearDimension : public ON_Annotation
 {
-  ON_OBJECT_DECLARE(ON_LinearDimension);
+  ON_OBJECT_DECLARE(ON_LinearDimension)
 
 public:
   ON_BOOL32 IsRealObject() const;
@@ -307,7 +307,7 @@ public:
 
 class ON_CLASS ON_RadialDimension : public ON_Annotation
 {
-  ON_OBJECT_DECLARE(ON_RadialDimension);
+  ON_OBJECT_DECLARE(ON_RadialDimension)
 
 public:
   ON_BOOL32 IsRealObject() const;
@@ -324,7 +324,7 @@ public:
 
 class ON_CLASS ON_AngularDimension : public ON_Annotation
 {
-  ON_OBJECT_DECLARE(ON_AngularDimension);
+  ON_OBJECT_DECLARE(ON_AngularDimension)
 
 public:
   ON_BOOL32 IsRealObject() const;
@@ -355,7 +355,7 @@ private:
 
 class ON_CLASS ON_TextEntity : public ON_Annotation
 {
-  ON_OBJECT_DECLARE(ON_TextEntity);
+  ON_OBJECT_DECLARE(ON_TextEntity)
 
 public:
   ON_BOOL32 IsRealObject() const;
@@ -384,7 +384,7 @@ private:
 
 class ON_CLASS ON_Leader : public ON_Annotation
 {
-  ON_OBJECT_DECLARE(ON_Leader);
+  ON_OBJECT_DECLARE(ON_Leader)
 
 public:
   ON_BOOL32 IsRealObject() const;

@@ -95,7 +95,7 @@ class ON_CLASS ON_Curve : public ON_Geometry
   // in a .cpp file.
   //
   // See the definition of ON_Object for details.
-  ON_OBJECT_DECLARE(ON_Curve);
+  ON_OBJECT_DECLARE(ON_Curve)
 
 public:
   // virtual ON_Object::DestroyRuntimeCache override
