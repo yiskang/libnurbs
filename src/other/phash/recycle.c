@@ -13,6 +13,9 @@ This also decreases memory fragmentation, and freeing structures
 --------------------------------------------------------------------
 */
 
+#include <string.h>
+#include <stdlib.h>
+
 #ifndef STANDARD
 # include "standard.h"
 #endif

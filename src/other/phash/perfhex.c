@@ -14,6 +14,8 @@ those pairs.
 ------------------------------------------------------------------------------
 */
 
+#include <stdlib.h>
+
 #ifndef STANDARD
 #include "standard.h"
 #endif

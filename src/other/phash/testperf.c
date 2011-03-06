@@ -4,6 +4,10 @@ Test a perfect hash.
 By Bob Jenkins.  Public Domain.
 ----------------------------------------------------------------------------
 */
+
+#include <string.h>
+#include <stdlib.h>
+
 #ifndef STANDARD
 #include "standard.h"
 #endif
@@ -53,7 +57,7 @@ reroot  *keyroot;     /* get space for keys */
   {
     ub4 i;
     mykey = (key *)renew(keyroot);
-    mykey->kname = (ub1 *)mytext;
+    mykey->kname = (char *)mytext;
     mytext = (char *)renew(textroot);
     mykey->klen  = (ub4)(strlen((char *)mykey->kname)-1);
     mykey->knext = *keys;
@@ -133,7 +137,7 @@ hashform *form;
 
 void usage_error()
 {
-  printf("usage is the same as perfect (which see)\n");
+  printf("usage is the same as genphash (which see)\n");
   exit(SUCCESS);
 }
 
