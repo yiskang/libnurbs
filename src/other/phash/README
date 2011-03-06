@@ -1,0 +1,7 @@
+Minimal Perfect Hashing 
+
+This code is based on code from Bob Jenkins' minimal perfect hashing code
+at http://burtleburtle.net/bob/hash/perfect.html
+
+He has released the code into the public domain - see headers in the 
+various files.
