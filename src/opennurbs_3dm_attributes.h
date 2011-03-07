@@ -46,15 +46,15 @@ class ON_CLASS ON_3dmObjectAttributes : public ON_Object
 
 public:
 
-  /** ON_Object virtual interface. @see #ON_Object */
+  /** ON_Object virtual interface. See \link ON_Object ON_Object\endlink */
   ON_BOOL32 IsValid( ON_TextLog* text_log = NULL ) const;
-  /** ON_Object virtual interface. @see #ON_Object */
+  /** ON_Object virtual interface. See \link ON_Object ON_Object\endlink */
   void Dump( ON_TextLog& ) const;
-  /** ON_Object virtual interface. @see #ON_Object */
+  /** ON_Object virtual interface. See \link ON_Object ON_Object\endlink */
   unsigned int SizeOf() const;
-  /** ON_Object virtual interface. @see #ON_Object */
+  /** ON_Object virtual interface. See \link ON_Object ON_Object\endlink */
   ON_BOOL32 Write(ON_BinaryArchive&) const;
-  /** ON_Object virtual interface. @see #ON_Object */
+  /** ON_Object virtual interface. See \link ON_Object ON_Object\endlink */
   ON_BOOL32 Read(ON_BinaryArchive&);
 
   /**
@@ -92,7 +92,8 @@ public:
    * If the object is hidden, it is not visible and it cannot be selected.
    */
   ON::object_mode Mode() const;
-  void SetMode( ON::object_mode ); /** @see #Mode */
+  /** See \link Mode() Mode()\endlink */
+  void SetMode( ON::object_mode ); 
 
   /**
    * Use this query to determine if an object is part of an 
@@ -107,7 +108,7 @@ public:
    *
    * @returns true if object is visible.
    *
-   * @see ON_3dmObjectAttributes::SetVisible
+   * @sa ON_3dmObjectAttributes::SetVisible
   */
   bool IsVisible() const;
 
@@ -116,7 +117,7 @@ public:
    *
    * @param bVisible [in] true to make object visible, 
    *                 false to make object invisible
-   * @see ON_3dmObjectAttributes::IsVisible
+   * @sa ON_3dmObjectAttributes::IsVisible
    */
   void SetVisible( bool bVisible );
 
@@ -129,7 +130,8 @@ public:
    * If LinetypeSource() is ON::linetype_from_object, then value of m_linetype is used.
    */
   ON::object_linetype_source LinetypeSource() const;
-  void SetLinetypeSource( ON::object_linetype_source ); /** @see #LinetypeSource */
+  /** See \link LinetypeSource() LinetypeSource()\endlink */
+  void SetLinetypeSource( ON::object_linetype_source ); 
 
   /**
    * Source of color for an OpenNURBS object.
@@ -141,11 +143,12 @@ public:
    * If ColorSource() is ON::color_from_material, then the diffuse color of the object's
    * render material is used.
    *
-   * @see #ON_3dmObjectAttributes::MaterialSource to
+   * @sa #ON_3dmObjectAttributes::MaterialSource to
    * determine where to get the definition of the object's render material.
    */
   ON::object_color_source ColorSource() const;
-  void SetColorSource( ON::object_color_source ); /** @see #ColorSource */
+  /** See \link ColorSource() ColorSource()\endlink */
+  void SetColorSource( ON::object_color_source ); 
 
   /**
    * Plotting color for an OpenNURBS object.
@@ -157,8 +160,9 @@ public:
    * If PlotColorSource() is ON::plot_color_from_object, then value of PlotColor() is used.
    */
   ON::plot_color_source PlotColorSource() const;
-  void SetPlotColorSource( ON::plot_color_source ); /** @see #PlotColorSource */
-
+  /** See \link PlotColorSource() PlotColorSource()\endlink */
+  void SetPlotColorSource( ON::plot_color_source ); 
+ 
   ON::plot_weight_source PlotWeightSource() const;
   void SetPlotWeightSource( ON::plot_weight_source );
 
@@ -173,7 +177,8 @@ public:
    * forced to display in that mode.
    */
   ON::display_mode DisplayMode() const;
-  void SetDisplayMode( ON::display_mode  ); /** @see #DisplayMode */
+  /** See \link DisplayMode() DisplayMode()\endlink */
+  void SetDisplayMode( ON::display_mode  );
 
   /**
    * If "this" has attributes (color, plot weight, ...) with 
@@ -521,8 +526,8 @@ public:
    
    * @returns True if a matching display material is found.
    *
-   * @see  #ON_3dmObjectAttributes::AddDisplayMaterialRef
-   * @see  #ON_3dmObjectAttributes::RemoveDisplayMaterialRef
+   * @sa #ON_3dmObjectAttributes::AddDisplayMaterialRef
+   * @sa #ON_3dmObjectAttributes::RemoveDisplayMaterialRef
   */
   bool FindDisplayMaterialRef(
       const ON_DisplayMaterialRef& search_material,
@@ -552,8 +557,8 @@ public:
    *
    * @returns True if input is valid (material id != nil)
    *
-   * @see #ON_3dmObjectAttributes::FindDisplayMaterialRef
-   * @see #ON_3dmObjectAttributes::RemoveDisplayMaterialRef
+   * @sa #ON_3dmObjectAttributes::FindDisplayMaterialRef
+   * @sa #ON_3dmObjectAttributes::RemoveDisplayMaterialRef
    */
   bool AddDisplayMaterialRef(
     ON_DisplayMaterialRef display_material
@@ -572,8 +577,8 @@ public:
    * 
    * @returns True if a display material reference was removed.
    *
-   * @see #ON_3dmObjectAttributes::FindDisplayMaterialRef
-   * @see #ON_3dmObjectAttributes::AddDisplayMaterialRef
+   * @sa #ON_3dmObjectAttributes::FindDisplayMaterialRef
+   * @sa #ON_3dmObjectAttributes::AddDisplayMaterialRef
    */
   bool RemoveDisplayMaterialRef(
     ON_UUID viewport_id,
