@@ -22,45 +22,46 @@
 #if !defined(OPENNURBS_3DM_ATTRIBUTES_INC_)
 #define OPENNURBS_3DM_ATTRIBUTES_INC_
 
-
-/*
-Description: 
-  Top level OpenNURBS objects have geometry and attributes.  The
-  geometry is stored in some class derived from ON_Geometry and 
-  the attributes are stored in an ON_3dmObjectAttributes class.
-  Examples of attributes are object name, object id, display 
-  attributes, group membership, layer membership, and so on.
-
-Remarks:
-  7 January 2003 Dale Lear
-    Derived from ON_Object so ON_UserData can be attached
-    to ON_3dmObjectAttributes.
-*/
+/**
+ * \file
+ * \brief ON_3dmObjectAttributes class contains OpenNURBS object attributes.
+ *
+ * Top level OpenNURBS objects have geometry and attributes.  The
+ * geometry is stored in some class derived from ON_Geometry and 
+ * the attributes are stored in an ON_3dmObjectAttributes class.
+ * Examples of attributes are object name, object id, display 
+ * attributes, group membership, layer membership, and so on.
+ *
+ * \htmlonly<blockquote>\endhtmlonly
+ * Remarks:<br>
+ *  7 January 2003 Dale Lear<br>
+ *    Derived from ON_Object so ON_UserData can be attached
+ *    to ON_3dmObjectAttributes.
+ *    </code>\htmlonly</blockquote>\endhtmlonly
+ */
 
 class ON_CLASS ON_3dmObjectAttributes : public ON_Object
 {
   ON_OBJECT_DECLARE(ON_3dmObjectAttributes)
 
 public:
-  // ON_Object virtual interface.  See ON_Object
-  // for details.
 
-  // virtual
+  /** ON_Object virtual interface. @see #ON_Object */
   ON_BOOL32 IsValid( ON_TextLog* text_log = NULL ) const;
-  // virtual
+  /** ON_Object virtual interface. @see #ON_Object */
   void Dump( ON_TextLog& ) const;
-  // virtual
+  /** ON_Object virtual interface. @see #ON_Object */
   unsigned int SizeOf() const;
-  // virtual
+  /** ON_Object virtual interface. @see #ON_Object */
   ON_BOOL32 Write(ON_BinaryArchive&) const;
-  // virtual
+  /** ON_Object virtual interface. @see #ON_Object */
   ON_BOOL32 Read(ON_BinaryArchive&);
 
-  /*
-  Returns:
-    True if successful.
-    (xform is invertable or didn't need to be).
-  */
+  /**
+   * True if successful
+   * (xform is invertable or didn't need to be).
+   * @returns True if successful.
+   */
   bool Transform( const ON_Xform& xform );
 
   // attributes of geometry and dimension table objects
@@ -76,157 +77,192 @@ public:
   bool operator==(const ON_3dmObjectAttributes&) const;
   bool operator!=(const ON_3dmObjectAttributes&) const;
 
-  // Initializes all attributes to the default values.
+  /// Initializes all attributes to the default values.
   void Default();
 
   // Interface ////////////////////////////////////////////////////////
 
-  // An OpenNURBS object must be in one of three modes: normal, locked
-  // or hidden.  If an object is in normal mode, then the object's layer
-  // controls visibility and selectability.  If an object is locked, then
-  // the object's layer controls visibility by the object cannot be selected.
-  // If the object is hidden, it is not visible and it cannot be selected.
+  /**
+   * OpenNURBS object mode.
+   *
+   * An OpenNURBS object must be in one of three modes: normal, locked
+   * or hidden.  If an object is in normal mode, then the object's layer
+   * controls visibility and selectability.  If an object is locked, then
+   * the object's layer controls visibility by the object cannot be selected.
+   * If the object is hidden, it is not visible and it cannot be selected.
+   */
   ON::object_mode Mode() const;
-  void SetMode( ON::object_mode ); // See Mode().
+  void SetMode( ON::object_mode ); /** @see #Mode */
 
-  /*
-  Description:
-    Use this query to determine if an object is part of an 
-    instance definition.
-  Returns:
-    True if the object is part of an instance definition.
-  */
+  /**
+   * Use this query to determine if an object is part of an 
+   * instance definition.
+   * @returns True if the object is part of an instance definition.
+   */
   bool IsInstanceDefinitionObject() const;
 
-  /*
-  Returns:
-    Returns true if object is visible.
-  See Also:
-    ON_3dmObjectAttributes::SetVisible
+  /**
+   * Report visibility status of object.
+   *
+   * @returns true if object is visible.
+   *
+   * @see ON_3dmObjectAttributes::SetVisible
   */
   bool IsVisible() const;
 
-  /*
-  Description:
-    Controls object visibility
-  Parameters:
-    bVisible - [in] true to make object visible, 
-                    false to make object invisible
-  See Also:
-    ON_3dmObjectAttributes::IsVisible
-  */
+  /**
+   * Controls object visibility.
+   *
+   * @param bVisible [in] true to make object visible, 
+   *                 false to make object invisible
+   * @see ON_3dmObjectAttributes::IsVisible
+   */
   void SetVisible( bool bVisible );
 
-  // The Linetype used to display an OpenNURBS object is specified in one of two ways.
-  // If LinetypeSource() is ON::linetype_from_layer, then the object's layer 
-  // ON_Layer::Linetype() is used.
-  // If LinetypeSource() is ON::linetype_from_object, then value of m_linetype is used.
+  /**
+   * The Linetype used to display an OpenNURBS object.  
+   *
+   * Linetype is specified in one of two ways.<br>
+   * If LinetypeSource() is ON::linetype_from_layer, then the object's layer 
+   * ON_Layer::Linetype() is used.<br>
+   * If LinetypeSource() is ON::linetype_from_object, then value of m_linetype is used.
+   */
   ON::object_linetype_source LinetypeSource() const;
-  void SetLinetypeSource( ON::object_linetype_source ); // See LinetypeSource().
+  void SetLinetypeSource( ON::object_linetype_source ); /** @see #LinetypeSource */
 
-  // The color used to display an OpenNURBS object is specified in one of three ways.
-  // If ColorSource() is ON::color_from_layer, then the object's layer 
-  // ON_Layer::Color() is used.
-  // If ColorSource() is ON::color_from_object, then value of m_color is used.
-  // If ColorSource() is ON::color_from_material, then the diffuse color of the object's
-  // render material is used.  See ON_3dmObjectAttributes::MaterialSource() to
-  // determine where to get the definition of the object's render material.
+  /**
+   * Source of color for an OpenNURBS object.
+   *
+   * The color used to display an OpenNURBS object is specified in one of three ways.<br>
+   * If ColorSource() is ON::color_from_layer, then the object's layer 
+   * ON_Layer::Color() is used.<br>
+   * If ColorSource() is ON::color_from_object, then value of m_color is used.<br>
+   * If ColorSource() is ON::color_from_material, then the diffuse color of the object's
+   * render material is used.
+   *
+   * @see #ON_3dmObjectAttributes::MaterialSource to
+   * determine where to get the definition of the object's render material.
+   */
   ON::object_color_source ColorSource() const;
-  void SetColorSource( ON::object_color_source ); // See ColorSource().
+  void SetColorSource( ON::object_color_source ); /** @see #ColorSource */
 
-  // The color used to plot an OpenNURBS object on paper is specified 
-  // in one of three ways.
-  // If PlotColorSource() is ON::plot_color_from_layer, then the object's layer 
-  // ON_Layer::PlotColor() is used.
-  // If PlotColorSource() is ON::plot_color_from_object, then value of PlotColor() is used.
+  /**
+   * Plotting color for an OpenNURBS object.
+   *
+   * The color used to plot an OpenNURBS object on paper is specified 
+   * in one of three ways.<br>
+   * If PlotColorSource() is ON::plot_color_from_layer, then the object's layer 
+   * ON_Layer::PlotColor() is used.<br>
+   * If PlotColorSource() is ON::plot_color_from_object, then value of PlotColor() is used.
+   */
   ON::plot_color_source PlotColorSource() const;
-  void SetPlotColorSource( ON::plot_color_source ); // See PlotColorSource().
+  void SetPlotColorSource( ON::plot_color_source ); /** @see #PlotColorSource */
 
   ON::plot_weight_source PlotWeightSource() const;
   void SetPlotWeightSource( ON::plot_weight_source );
 
-
-  // OpenNURBS objects can be displayed in one of three ways: wireframe,
-  // shaded, or render preview.  If the display mode is ON::default_display,
-  // then the display mode of the viewport detrmines how the object
-  // is displayed.  If the display mode is ON::wireframe_display,
-  // ON::shaded_display, or ON::renderpreview_display, then the object is
-  // forced to display in that mode.
+  /**
+   * Display mode for an OpenNURBS object.
+   *
+   * OpenNURBS objects can be displayed in one of three ways: wireframe,
+   * shaded, or render preview.  If the display mode is ON::default_display,
+   * then the display mode of the viewport detrmines how the object
+   * is displayed.  If the display mode is ON::wireframe_display,
+   * ON::shaded_display, or ON::renderpreview_display, then the object is
+   * forced to display in that mode.
+   */
   ON::display_mode DisplayMode() const;
-  void SetDisplayMode( ON::display_mode  ); // See DisplayMode().
+  void SetDisplayMode( ON::display_mode  ); /** @see #DisplayMode */
 
-  /*
-  Description:
-    If "this" has attributes (color, plot weight, ...) with 
-    "by parent" sources, then the values of those attributes 
-    on parent_attributes are copied.
-  Parameters:
-    parent_attributes - [in]
-    parent_layer - [in]
-    control_limits - [in]
-      The bits in control_limits determine which attributes may
-      may be copied.
-                1: visibility
-                2: color
-                4: render material
-                8: plot color
-            0x10: plot weight
-            0x20: linetype
-            0x40: display order
-
-  Returns:
-     The bits in the returned integer indicate which attributes were
-     actually modified.
-
-                1: visibility
-                2: color
-                4: render material
-                8: plot color
-            0x10: plot weight
-            0x20: linetype
-            0x40: display order
-  */
-  ON_DEPRECATED unsigned int ApplyParentalControl( 
-         const ON_3dmObjectAttributes& parent_attributes,
-         unsigned int control_limits = 0xFFFFFFFF
-         );
-
+  /**
+   * If "this" has attributes (color, plot weight, ...) with 
+   *"by parent" sources, then the values of those attributes 
+   * on parent_attributes are copied.
+   *
+   * @param parent_attributes [in]
+   * @param parent_layer [in]
+   * @param control_limits [in]
+   *   The bits in control_limits determine which attributes may
+   *   may be copied.<br>
+   *             1: visibility<br>
+   *             2: color<br>
+   *             4: render material<br>
+   *             8: plot color<br>
+   *         0x10: plot weight<br>
+   *         0x20: linetype<br>
+   *         0x40: display order
+   *
+   * @returns  The bits in the returned integer indicate which attributes were
+   *  actually modified.<br>
+   *             1: visibility<br>
+   *             2: color<br>
+   *             4: render material<br>
+   *             8: plot color<br>
+   *         0x10: plot weight<br>
+   *         0x20: linetype<br>
+   *         0x40: display order
+   */
   unsigned int ApplyParentalControl( 
          const ON_3dmObjectAttributes& parent_attributes,
          const ON_Layer& parent_layer,
          unsigned int control_limits = 0xFFFFFFFF
          );
 
-  // Every OpenNURBS object has a UUID (universally unique identifier).  The
-  // default value is NULL.  When an OpenNURBS object is added to a model, the
-  // value is checked.  If the value is NULL, a new UUID is created.  If the
-  // value is not NULL but it is already used by another object in the model,
-  // a new UUID is created.  If the value is not NULL and it is not used by 
-  // another object in the model, then that value persists. When an object
-  // is updated, by a move for example, the value of m_uuid persists.
+  ON_DEPRECATED unsigned int ApplyParentalControl( 
+         const ON_3dmObjectAttributes& parent_attributes,
+         unsigned int control_limits = 0xFFFFFFFF
+         );
+
+  /**
+   * OpenNURBS object universally unique identifier (UUID)
+   *
+   * Every OpenNURBS object has a UUID (universally unique identifier).  The
+   * default value is NULL.  When an OpenNURBS object is added to a model, the
+   * value is checked.  If the value is NULL, a new UUID is created.  If the
+   * value is not NULL but it is already used by another object in the model,
+   * a new UUID is created.  If the value is not NULL and it is not used by 
+   * another object in the model, then that value persists. When an object
+   * is updated, by a move for example, the value of m_uuid persists.
+   */
   ON_UUID m_uuid;
 
-  // OpenNURBS object have optional text names.  More than one object in
-  // a model can have the same name and some objects may have no name.
+  /**
+   * OpenNURBS object text name (optional)
+   *
+   * OpenNURBS object have optional text names.  More than one object in
+   * a model can have the same name and some objects may have no name.
+   */
   ON_wString m_name;
 
-  // OpenNURBS objects may have an URL.  There are no restrictions on what
-  // value this URL may have.  As an example, if the object came from a
-  // commercial part library, the URL might point to the definition of that
-  // part.
+  /** 
+   * OpenNURBS object URL (optional)
+   *
+   * OpenNURBS objects may have an URL.  There are no restrictions on what
+   * value this URL may have.  As an example, if the object came from a
+   * commercial part library, the URL might point to the definition of that
+   * part.
+   */
   ON_wString m_url;
 
-  // Layer definitions in an OpenNURBS model are stored in a layer table.
-  // The layer table is conceptually an array of ON_Layer classes.  Every
-  // OpenNURBS object in a model is on some layer.  The object's layer
-  // is specified by zero based indicies into the ON_Layer array.
+  /**
+   * OpenNURBS object layer index
+   *
+   * Layer definitions in an OpenNURBS model are stored in a layer table.
+   * The layer table is conceptually an array of ON_Layer classes.  Every
+   * OpenNURBS object in a model is on some layer.  The object's layer
+   * is specified by zero based indicies into the ON_Layer array.
+   */
   int m_layer_index;
 
-  // Linetype definitions in an OpenNURBS model are stored in a linetype table.
-  // The linetype table is conceptually an array of ON_Linetype classes.  Every
-  // OpenNURBS object in a model references some linetype.  The object's linetype
-  // is specified by zero based indicies into the ON_Linetype array.
-  // index 0 is reserved for continuous linetype (no pattern)
+  /**
+   * OpenNURBS object linetype index
+   *
+   * Linetype definitions in an OpenNURBS model are stored in a linetype table.
+   * The linetype table is conceptually an array of ON_Linetype classes.  Every
+   * OpenNURBS object in a model references some linetype.  The object's linetype
+   * is specified by zero based indicies into the ON_Linetype array.
+   * index 0 is reserved for continuous linetype (no pattern)
+   */
   int m_linetype_index;
 
   // Rendering material:
@@ -236,7 +272,7 @@ public:
   //   If you are developing a high quality plug-in renderer, 
   //   and a user is assigning one of your fabulous rendering 
   //   materials to this object, then add rendering material 
-  //   information to the  m_rendering_attributes.m_materials[] 
+  //   information to the m_rendering_attributes.m_materials[] 
   //   array. 
   //
   // Developers:
