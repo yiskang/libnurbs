@@ -419,7 +419,7 @@ public:
    *
    * If GroupCount() is zero, then GroupList() returns NULL.
    *
-   * @ returns array of GroupCount() zero based group indices.
+   * @returns array of GroupCount() zero based group indices.
    */
   const int* GroupList() const;
 
