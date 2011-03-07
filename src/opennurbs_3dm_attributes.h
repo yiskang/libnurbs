@@ -97,6 +97,7 @@ public:
   /**
    * Use this query to determine if an object is part of an 
    * instance definition.
+   *
    * @returns True if the object is part of an instance definition.
    */
   bool IsInstanceDefinitionObject() const;
@@ -265,93 +266,127 @@ public:
    */
   int m_linetype_index;
 
-  // Rendering material:
-  //   If you want something simple and fast, set 
-  //   m_material_index to the index of the rendering material 
-  //   and ignore m_rendering_attributes.
-  //   If you are developing a high quality plug-in renderer, 
-  //   and a user is assigning one of your fabulous rendering 
-  //   materials to this object, then add rendering material 
-  //   information to the m_rendering_attributes.m_materials[] 
-  //   array. 
-  //
-  // Developers:
-  //   As soon as m_rendering_attributes.m_materials[] is not empty,
-  //   rendering material queries slow down.  Do not populate
-  //   m_rendering_attributes.m_materials[] when setting 
-  //   m_material_index will take care of your needs.
+  /** 
+   * OpenNURBS object rendering material
+   *
+   * If you want something simple and fast, set 
+   * m_material_index to the index of the rendering material 
+   * and ignore m_rendering_attributes.<br>
+   * If you are developing a high quality plug-in renderer, 
+   * and a user is assigning one of your fabulous rendering 
+   * materials to this object, then add rendering material 
+   * information to the m_rendering_attributes.m_materials[] 
+   * array. 
+   *
+   * Developers:<br>
+   *   As soon as m_rendering_attributes.m_materials[] is not empty,
+   *   rendering material queries slow down.  Do not populate
+   *   m_rendering_attributes.m_materials[] when setting 
+   *   m_material_index will take care of your needs.
+   */
   int m_material_index;
   ON_ObjectRenderingAttributes m_rendering_attributes;
 
-  /*
-  Description:
-    Determine if the simple material should come from
-    the object or from it's layer.
-    High quality rendering plug-ins should use m_rendering_attributes.
-  Returns:
-    Where to get material information if you do are too lazy
-    to look in m_rendering_attributes.m_materials[].
-  */
+  /**
+   * OpenNURBS material source
+   *
+   * Determine if the simple material should come from
+   * the object or from it's layer.<br>
+   * High quality rendering plug-ins should use m_rendering_attributes.
+   *
+   * @returns Where to get material information if you do are too lazy
+   * to look in m_rendering_attributes.m_materials[].
+   */
   ON::object_material_source MaterialSource() const;
 
-  /*
-  Description:
-    Specifies if the simple material should be the one
-    indicated by the material index or the one indicated
-    by the object's layer.
-  Parameters:
-    ms - [in]
-  */
+  /**
+   * Set OpenNURBS material source
+   *
+   * Specifies if the simple material should be the one
+   * indicated by the material index or the one indicated
+   * by the object's layer.
+   * 
+   * @param ms - [in]
+   */
   void SetMaterialSource( ON::object_material_source ms );
 
-  // If ON::color_from_object == ColorSource(), then m_color is the object's
-  // display color.
+  /// If ON::color_from_object == ColorSource(), then m_color is the object's
+  /// display color.
   ON_Color      m_color;
 
-  // If ON::plot_color_from_object == PlotColorSource(), then m_color is the object's
-  // display color.
+  /// If ON::plot_color_from_object == PlotColorSource(), then m_color is the object's
+  /// display color.
   ON_Color      m_plot_color;
 
-  // Display order used to force objects to be drawn on top or behind each other
-  // 0  = draw object in standard depth buffered order
-  // <0 = draw object behind "normal" draw order objects
-  // >0 = draw object on top of "noraml" draw order objects
-  // Larger number draws on top of smaller number.
+  /**
+   * Display order used to force objects to be drawn on top or behind each other<br>
+   * 
+   * 0  = draw object in standard depth buffered order<br>
+   * <0 = draw object behind "normal" draw order objects<br>
+   * >0 = draw object on top of "noraml" draw order objects<br>
+   * Larger number draws on top of smaller number.
+   */
   int m_display_order;
 
-  // Plot weight in millimeters.
-  //   =0.0 means use the default width
-  //   <0.0 means don't plot (visible for screen display, but does not show on plot)
+  /** 
+   * Plot weight in millimeters.
+   *
+   *  =0.0 means use the default width<br>
+   *  <0.0 means don't plot (visible for screen display, but does not show on plot)
+   */
   double m_plot_weight_mm;
 
-  // Used to indicate an object has a decoration (like an arrowhead on a curve)
+  /** Used to indicate an object has a decoration (like an arrowhead on a curve) */
   ON::object_decoration  m_object_decoration;
 
-  // When a surface object is displayed in wireframe, m_wire_density controls
-  // how many isoparametric wires are used.
-  //
-  //   @table
-  //   value    number of isoparametric wires
-  //   -1       boundary wires
-  //    0       boundary and knot wires 
-  //    1       boundary and knot wires and, if there are no
-  //            interior knots, a single interior wire.
-  //   N>=2     boundary and knot wires and (N-1) interior wires
+  /**
+   * OpenNURBS object wire density
+   *
+   * When a surface object is displayed in wireframe, m_wire_density controls
+   * how many isoparametric wires are used.
+   *
+   * <table border="1" cellpadding="5">
+   *   <tr>
+   *     <td align="center">value</td> <td>number of isoparametric wires</td>
+   *   </tr>
+   *   <tr>
+   *     <td align="center">-1</td>    <td>boundary wires</td> 
+   *   </tr>
+   *   <tr>
+   *     <td align="center">0</td>     <td>boundary and knot wires</td> 
+   *   </tr>
+   *   <tr>
+   *     <td align="center">1</td>     <td>boundary and knot wires and, if there are no<br>
+   *                                       interior knots, a single interior wire.</td> 
+   *   </tr>
+   *   <tr>
+   *     <td align="center">N>=2</td>  <td> boundary and knot wires and (N-1) interior wires</td> 
+   *   </tr>
+   * </table>
+   */
   int m_wire_density;
 
 
-  // If m_viewport_id is nil, the object is active in
-  // all viewports. If m_viewport_id is not nil, then 
-  // this object is only active in a specific view.  
-  // This field is primarily used to assign page space
-  // objects to a specific page, but it can also be used 
-  // to restrict model space to a specific view.
+  /**
+   * OpenNURBS object viewport id
+   *
+   * If m_viewport_id is nil, the object is active in
+   * all viewports. If m_viewport_id is not nil, then 
+   * this object is only active in a specific view.  
+   * This field is primarily used to assign page space
+   * objects to a specific page, but it can also be used 
+   * to restrict model space to a specific view.
+   */
   ON_UUID m_viewport_id;
 
-  // Starting with V4, objects can be in either model space
-  // or page space.  If an object is in page space, then
-  // m_viewport_id is not nil and identifies the page it 
-  // is on.
+  /**
+   * OpenNURBS space (model or page)
+   *
+   * Starting with V4, objects can be in either model space
+   * or page space.  If an object is in page space, then
+   * m_viewport_id is not nil and identifies the page it 
+   * is on.
+   */
   ON::active_space m_space;
 
 private:
@@ -371,175 +406,184 @@ public:
 
   // group interface
 
-  // returns number of groups object belongs to
+  /// @returns number of groups object belongs to
   int GroupCount() const;
 
-  // Returns and array an array of GroupCount() zero based 
-  // group indices.  If GroupCount() is zero, then GroupList()
-  // returns NULL.
+  /**
+   * Returns an array of GroupCount() zero based group indices.  
+   *
+   * If GroupCount() is zero, then GroupList() returns NULL.
+   *
+   * @ returns array of GroupCount() zero based group indices.
+   */
   const int* GroupList() const;
 
-  // Returns GroupCount() and puts a list of zero based group indices 
-  // into the array.
+  /// Returns GroupCount() and puts a list of zero based group indices 
+  /// into the array.
   int GetGroupList(ON_SimpleArray<int>&) const;
 
-  // Returns the index of the last group in the group list
-  // or -1 if the object is not in any groups
+  /// Returns the index of the last group in the group list
+  /// or -1 if the object is not in any groups
   int TopGroup() const;
 
-  // Returns true if object is in group with the specified index
+  /** Returns true if object is in group with the specified index */
   ON_BOOL32 IsInGroup(
     int // zero based group index
     ) const;
 
-  // Returns true if the object is in any of the groups in the list
+  /** Returns true if the object is in any of the groups in the list */
   ON_BOOL32 IsInGroups(
     int,       // group_list_count
     const int* // group_list[] array
     ) const;
 
-  // Returns true if object is in any of the groups in the list
+  /** Returns true if object is in any of the groups in the list */
   ON_BOOL32 IsInGroups(
     const ON_SimpleArray<int>& // group_list[] array
     ) const;
 
-  // Adds object to the group with specified index by appending index to
-  // group list (If the object is already in group, nothing is changed.)
+  /// Adds object to the group with specified index by appending index to
+  /// group list (If the object is already in group, nothing is changed.)
   void AddToGroup(
     int // zero based group index
     );
 
-  // Removes object from the group with specified index.  If the 
-  // object is not in the group, nothing is changed.
+  /// Removes object from the group with specified index.  If the 
+  /// object is not in the group, nothing is changed.
   void RemoveFromGroup(
     int // zero based group index
     );
 
-  // removes the object from the last group in the group list
+  /// Removes the object from the last group in the group list
   void RemoveFromTopGroup();
 
-  // Removes object from all groups.
+  /// Removes object from all groups.
   void RemoveFromAllGroups();
 
 
   // display material references
 
-  /*
-  Description:
-    Searches for a matching display material.  For a given
-    viewport id, there is at most one display material.
-    For a given display material id, there can be multiple
-    viewports.  If there is a display reference in the
-    list with a nil viewport id, then the display material
-    will be used in all viewports that are not explictly
-    referenced in other ON_DisplayMaterialRefs.
-
-  Parameters:
-    search_material - [in] 
-    found_material - [out]
-    
-    If FindDisplayMaterialRef(), the input value of search_material
-    is never changed.  If FindDisplayMaterialRef() returns true, 
-    the chart shows the output value of display_material.  When
-    there are multiple possibilities for a match, the matches
-    at the top of the chart have higher priority.
-
-    search_material  found_material
-    input value      output value
-
-    (nil,nil)        (nil,did) if (nil,did) is in the list.
-    (nil,did)        (vid,did) if (vid,did) is in the list.
-    (nil,did)        (nil,did) if (nil,did) is in the list.
-    (vid,nil)        (vid,did) if (vid,did) is in the list
-    (vid,nil)        (vid,did) if (nil,did) is in the list
-    (vid,did)        (vid,did) if (vid,did) is in the list.
-
-  Example:
-    ON_UUID display_material_id = ON_nil_uuid;
-    ON_Viewport vp = ...;
-    ON_DisplayMaterialRef search_dm;
-    search_dm.m_viewport_id = vp.ViewportId();
-    ON_DisplayMaterialRef found_dm;
-    if ( attributes.FindDisplayMaterial(search_dm, &found_dm) )
-    {
-      display_material_id = found_dm.m_display_material_id;
-    }
-
-  Returns:
-    True if a matching display material is found.
-  See Also:
-    ON_3dmObjectAttributes::AddDisplayMaterialRef
-    ON_3dmObjectAttributes::RemoveDisplayMaterialRef
+  /**
+   * Search for a matching display material.
+   *
+   * For a given viewport id, there is at most one display material.
+   * For a given display material id, there can be multiple
+   * viewports.  If there is a display reference in the
+   * list with a nil viewport id, then the display material
+   * will be used in all viewports that are not explictly
+   * referenced in other ON_DisplayMaterialRefs.
+   *
+   * @param search_material - [in] 
+   * @param found_material - [out]
+   * 
+   * If FindDisplayMaterialRef(), the input value of search_material
+   * is never changed.  If FindDisplayMaterialRef() returns true, 
+   * the chart shows the output value of display_material.  When
+   * there are multiple possibilities for a match, the matches
+   * at the top of the chart have higher priority.
+   *
+   * <table border="1" cellpadding="5">
+   *  <tr>
+   *    <td align="center">search_material<br>input value</td> <td>found_material<br>output value</td>
+   *  </tr>
+   *  <tr>
+   *    <td align="center">(nil,nil)</td>       <td>(nil,did) if (nil,did) is in the list.</td>
+   *  </tr>
+   *  <tr>
+   *    <td align="center">(nil,did)</td>       <td>(vid,did) if (vid,did) is in the list.</td>
+   *  </tr>
+   *  <tr>
+   *    <td align="center">(nil,did)</td>       <td>(nil,did) if (nil,did) is in the list.</td>
+   *  </tr>
+   *  <tr>
+   *    <td align="center">(vid,nil)</td>       <td>(vid,did) if (vid,did) is in the list</td>
+   *  </tr>
+   *  <tr>
+   *    <td align="center">(vid,nil)</td>       <td>(vid,did) if (nil,did) is in the list</td>
+   *  </tr>
+   *  <tr>
+   *    <td align="center">(vid,did)</td>       <td>(vid,did) if (vid,did) is in the list.</td>
+   *  </tr>
+   * </table>
+   * 
+   * Example:<br>
+   * \code
+   *   ON_UUID display_material_id = ON_nil_uuid;
+   *   ON_Viewport vp = ...;
+   *   ON_DisplayMaterialRef search_dm;
+   *   search_dm.m_viewport_id = vp.ViewportId();
+   *   ON_DisplayMaterialRef found_dm;
+   *   if ( attributes.FindDisplayMaterial(search_dm, &found_dm) )
+   *   {
+   *     display_material_id = found_dm.m_display_material_id;
+   *   }
+   * \endcode                                                         
+   
+   * @returns True if a matching display material is found.
+   *
+   * @see  #ON_3dmObjectAttributes::AddDisplayMaterialRef
+   * @see  #ON_3dmObjectAttributes::RemoveDisplayMaterialRef
   */
   bool FindDisplayMaterialRef(
       const ON_DisplayMaterialRef& search_material,
       ON_DisplayMaterialRef* found_material = NULL
     ) const;
 
-  /*
-  Description:
-    Quick way to see if a viewport has a special material.
-  Parameters:
-    viewport_id - [in]
-    display_material_id - [out]
-  Returns:
-    True if a material_id is assigned.
-  */
+  /**
+   *  Quick way to see if a viewport has a special material.
+   *
+   *  @param viewport_id - [in]
+   *  @param display_material_id - [out]
+   *
+   *  @returns True if a material_id is assigned.
+   */
   bool FindDisplayMaterialId( 
         const ON_UUID& viewport_id, 
         ON_UUID* display_material_id = NULL
         ) const;
      
-  /*
-  Description:
-    Add a display material reference to the attributes.  If
-    there is an existing entry with a matching viewport id,
-    the existing entry is replaced.
-  Parameters:
-    display_material - [in]
-  Returns:
-    True if input is valid (material id != nil)
-  See Also:
-    ON_3dmObjectAttributes::FindDisplayMaterialRef
-    ON_3dmObjectAttributes::RemoveDisplayMaterialRef
-  */
+  /**
+   * Add a display material reference to the attributes.  
+   *
+   * If there is an existing entry with a matching viewport id,
+   * the existing entry is replaced.
+   *
+   * @param display_material - [in]
+   *
+   * @returns True if input is valid (material id != nil)
+   *
+   * @see #ON_3dmObjectAttributes::FindDisplayMaterialRef
+   * @see #ON_3dmObjectAttributes::RemoveDisplayMaterialRef
+   */
   bool AddDisplayMaterialRef(
     ON_DisplayMaterialRef display_material
     );
 
-  /*
-  Description:
-    Remove a display material reference from the list.
-  Parameters:
-    viewport_id - [in] Any display material references
-      with this viewport id will be removed.  If nil,
-      then viewport_id is ignored.
-    display_material_id - [in]
-      Any display material references that match the
-      viewport_id and have this display_material_id
-      will be removed.  If nil, then display_material_id
-      is ignored.
-  Returns:
-    True if a display material reference was removed.
-  See Also:
-    ON_3dmObjectAttributes::FindDisplayMaterialRef
-    ON_3dmObjectAttributes::AddDisplayMaterialRef
-  */
+  /**
+   * Remove a display material reference from the list.
+   *
+   * @param viewport_id - [in] Any display material references
+   *   with this viewport id will be removed.  If nil,
+   *   then viewport_id is ignored.
+   * @param display_material_id - [in] Any display material references that match the
+   *   viewport_id and have this display_material_id
+   *   will be removed.  If nil, then display_material_id
+   *   is ignored.
+   * 
+   * @returns True if a display material reference was removed.
+   *
+   * @see #ON_3dmObjectAttributes::FindDisplayMaterialRef
+   * @see #ON_3dmObjectAttributes::AddDisplayMaterialRef
+   */
   bool RemoveDisplayMaterialRef(
     ON_UUID viewport_id,
     ON_UUID display_material_id = ON_nil_uuid
     );
 
-  /*
-  Description:
-    Remove a the entire display material reference list.
-  */
+  /** Remove a the entire display material reference list. */
   void RemoveAllDisplayMaterialRefs();
 
-  /*
-  Returns:
-    Number of diplay material refences.
-  */
+  /** Number of diplay material refences. */
   int DisplayMaterialRefCount() const;
 
   ON_SimpleArray<ON_DisplayMaterialRef> m_dmref;
