@@ -460,5 +460,42 @@ int on_vsnprintf( char *buffer, size_t count, const char *format, va_list argptr
 int on_vsnwprintf( wchar_t *buffer, size_t count, const wchar_t *format, va_list argptr );
 
 
+
+// We need to flag variables that are unused in functions but present
+// (and intended to be present) in argument lists - there is no cross
+// platform standard for this so a macro is needed.  We follow BRL-CAD's
+// lead.  Note: be sure to encompase JUST the variable:
+//
+// Correct:    **UNUSED(var)
+// Incorrect:  UNUSED(**var)
+
+#ifndef UNUSED
+#  if GCC_PREREQ(2, 5)
+     /* GCC-style */
+#    define UNUSED(parameter) (parameter) __attribute__((unused))
+#  else
+     /* MSVC/C++ */
+#    ifdef __cplusplus
+#      if defined(NDEBUG)
+#        define UNUSED(parameter) /* parameter */
+#      else /* some of them are asserted */
+#         define UNUSED(parameter) (parameter)
+#      endif
+#    else
+#      if defined(_MSC_VER)
+         /* disable reporting an "unreferenced formal parameter" */
+#        pragma warning( disable : 4100 )
+#      endif
+#      define UNUSED(parameter) (parameter)
+#    endif
+#  endif
+#else
+#  undef UNUSED
+#  define UNUSED(parameter) (parameter)
+#  warning "UNUSED was previously defined.  Parameter declaration behavior is unknown, see opennurbs_system.h"
+#endif
+
+
+
 #endif
 
