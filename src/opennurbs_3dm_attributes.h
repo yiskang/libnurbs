@@ -37,7 +37,7 @@
  *  7 January 2003 Dale Lear<br>
  *    Derived from ON_Object so ON_UserData can be attached
  *    to ON_3dmObjectAttributes.
- *    </code>\htmlonly</blockquote>\endhtmlonly
+ * \htmlonly</blockquote>\endhtmlonly
  */
 
 class ON_CLASS ON_3dmObjectAttributes : public ON_Object
