@@ -1,0 +1,5 @@
+Public domain code from http://jgt.akpeters.com/papers/EisemannEtAl07/
+
+Fast Ray/Axis-Aligned Bounding Box Overlap Tests using Ray Slopes
+
+Paper available here: http://graphics.tu-bs.de/people/eisemann/paper/Eisemann07RS.pdf
