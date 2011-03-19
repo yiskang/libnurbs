@@ -470,9 +470,11 @@ int on_vsnwprintf( wchar_t *buffer, size_t count, const wchar_t *format, va_list
 // Incorrect:  UNUSED(**var)
 
 #ifndef UNUSED
-#  if GCC_PREREQ(2, 5)
-     /* GCC-style */
-#    define UNUSED(parameter) (parameter) __attribute__((unused))
+#  if defined __GNUC__
+#    if __GNUC__ > 2 || (__GNUC__ == 2 && __GNUC_MINOR__ >= 5)
+       /* GCC-style */
+#      define UNUSED(parameter) (parameter) __attribute__((unused))
+#    endif
 #  else
      /* MSVC/C++ */
 #    ifdef __cplusplus
