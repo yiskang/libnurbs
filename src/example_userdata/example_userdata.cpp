@@ -10,7 +10,7 @@
 
 class MyUserData : public ON_UserData
 {
-  ON_OBJECT_DECLARE(MyUserData);
+  ON_OBJECT_DECLARE(MyUserData)
 
 public:
   // Note well:

@@ -4,7 +4,7 @@
 class CExampleWriteUserData : public ON_UserData
 {
   static int m__sn;
-  ON_OBJECT_DECLARE(CExampleWriteUserData);
+  ON_OBJECT_DECLARE(CExampleWriteUserData)
 
 public:
   static ON_UUID Id();
