@@ -52,12 +52,12 @@ public:
   Description:
     Get a plane that contains the ray.
   Parameters:
-    plane - [out] a plane that contains the line.  The orgin
-       of the plane is at the start of the line.  
+    plane - [out] a plane that contains the ray.  The orgin
+       of the plane is at the start of the ray.  
        If possible a plane parallel to the world xy, yz or zx
        plane is returned.
   Returns:
-    true if a coordinate of the line's direction vector is
+    true if a coordinate of the ray's direction vector is
     larger than tolerance.
   */
   bool InPlane( ON_Plane& plane, double tolerance = 0.0 ) const;
